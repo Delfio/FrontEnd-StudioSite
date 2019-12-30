@@ -1,15 +1,21 @@
 import React from 'react';
-import 'materialize-css/dist/css/materialize.min.css'
+import { BrowserRouter } from 'react-router-dom';
+
+import Routes from './routes';
+
+import 'materialize-css/dist/css/materialize.min.css';
+import GlobalStyle from './styles/global';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <div className="card center">
-        <div className="card-content">
-          <h2>kkkkk</h2>
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes />
+      <GlobalStyle />
+      <Footer />
+    </BrowserRouter>
   );
 }
 

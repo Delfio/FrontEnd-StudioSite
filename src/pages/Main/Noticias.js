@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import api from '../../services/api';
 
+import Propaganda from '../../components/Propagandas';
+
 import {
   TtiutloEvento,
-  PopularPosts,
   List2,
   DivBannerDestaque,
   ImgBannerDestaque,
@@ -14,15 +15,13 @@ export default function Noticias() {
 
   const [evento, setEventos] = useState([]);
 
-  const [ anuncio, setAnuncio ] = useState({});
+
 
   useEffect(() => {
     async function loadEventos() {
       const response = await api.get('/ultimos/eventos')
       setEventos(response.data)
 
-      const props = await api.get('/anuncio');
-      setAnuncio(props.data)
     }
 
     loadEventos();
@@ -64,49 +63,7 @@ export default function Noticias() {
             </div>
           </List2>
         </div>
-        {anuncio.Anuncio2 ?
-          (
-            <div className="col l3 hide-on-med-and-down">
-              {anuncio.Anuncio2.imagem ?
-                (
-                  <div className="card">
-                    <div className="right-align blue">
-                      <PopularPosts>Confira nossos parceiros</PopularPosts>
-                    </div>
-                    <section style={{ margin: 25 }} className="card-image">
-                      <img
-                        className="responsive-img"
-                        src={anuncio.Anuncio2.imagem.url}
-                        alt=""
-                      />
-                    </section>
-                  </div>
-                ) : anuncio.Anuncio2.script || null
-              }
-            </div>
-          ) : null
-        }
-
-        {anuncio.Anuncio3 ?
-          (
-            <div className="col l3 hide-on-med-and-down">
-              {
-                anuncio.Anuncio3.script ?
-                (
-                  <iframe
-                    src={anuncio.Anuncio3.script.script}
-                    title="propaganda-teste"
-                    width="320"
-                    height="480"
-                    frameBorder="0"
-                    allowFullScreen
-                  />
-                ):
-                  anuncio.Anuncio3.imagem.url || null
-              }
-            </div>
-          ): null
-        }
+        <Propaganda />
       </div>
     </div>
   );

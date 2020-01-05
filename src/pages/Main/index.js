@@ -1,6 +1,5 @@
 /* // eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
-import M from 'materialize-css/dist/js/materialize.min.js';
 import { List, DivBannerDestaque, ImgBannerDestaque } from './styles';
 
 import api from '../../services/api';
@@ -19,7 +18,6 @@ export default function Main() {
     async function loadPrincipal(){
       const response = await api.get('/principal')
       const data = response.data.map(item => (
-        // console.log(item.Info1.video),
         setLink(item.Info1.video),
         setInfos(item.Info2)
       ))
@@ -29,9 +27,6 @@ export default function Main() {
 
   return (
     <>
-    {/* {infos.map(item => (
-      console.log(item)
-    ))} */}
       <Banner />
 
       <div className="row container">

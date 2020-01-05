@@ -19,7 +19,7 @@ export default class Header extends Component {
               <a
                 href="#"
                 data-target="mobile-demo"
-                className="sidenav-trigger show-on-large"
+                className="sidenav-trigger hide-on-large-only"
               >
                 <i className="material-icons">menu</i>
               </a>

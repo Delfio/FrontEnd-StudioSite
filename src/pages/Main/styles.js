@@ -58,6 +58,7 @@ export const List = styled.ul`
 `;
 
 export const List2 = styled.ul`
+
   li {
     & + li {
       border-top: solid #eee 2px;
@@ -65,10 +66,32 @@ export const List2 = styled.ul`
   }
 `;
 
+export const List3 = styled.ul`
+
+  li {
+    border-radius: 15px;
+
+    &:hover {
+      transition-delay: 0s;
+      transform: scale(1.02);
+
+      box-shadow: 0px 0px 15px rgba(80,80,80, 0.6);
+    }
+
+    border-bottom: solid #eee 2px;
+    margin-bottom: 15px;
+    @media (max-width: 980px) {
+      & + li {
+        border-top: solid #eee 2px;
+      }
+    }
+  }
+`;
+
 export const DivBannerDestaque = styled.section`
   position: relative;
+
   padding: 5px;
-  width: 100%;
   text-align: center;
   // margin-right: 2.66%;
   // margin: 2em;
@@ -80,12 +103,17 @@ export const DivBannerDestaque = styled.section`
 `;
 
 export const ImgBannerDestaque = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 240px;
+  max-height: 300px;
   height: auto;
   width: 100%;
   // max-height: 9rem;
   margin-top: 5px;
+
+  @media (max-width: 980px) {
+    margin-top: -10px;
+  }
+
   padding: 0;
   border-radius: 5px;
   // position: cent;

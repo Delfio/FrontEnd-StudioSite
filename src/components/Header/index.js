@@ -8,11 +8,20 @@ export default class Header extends Component {
       const elems = document.querySelectorAll('.sidenav');
       const instances = M.Sidenav.init(elems, {});
     });
+    let elems = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(elems, {inDuration: 300, outDuration: 225});
   }
 
   render() {
     return (
       <>
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">Entrar</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Registrar</a></li>
+        <li class="divider"></li>
+
+      </ul>
         <div className="navbar-fixed">
           <nav className="blue">
             <div className="nav-wrapper">
@@ -48,46 +57,61 @@ export default class Header extends Component {
                       <a href="badges.html">Tudo aqui empresa</a>
                     </Link>
                   </li>
+                  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Entrar<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
               </div>
             </div>
           </nav>
         </div>
         <ul id="mobile-demo" className="sidenav">
-          <li>
-            <div className="user-view">
-              <div className="background">
-                <img src="images/office.jpg" />
-              </div>
-              <a href="#user">
-                <img className="circle center" src="https://fakeimg.pl/350x200/ff0000,128/000,255" />
-              </a>
-              <a href="#name">
-                <span className="white-text name">John Doe</span>
-              </a>
-              <a href="#email">
-                <span className="white-text email">jdandturk@gmail.com</span>
-              </a>
-            </div>
-          </li>
-          <li>
-            <a href="#!">
-              <i className="material-icons">cloud</i>First Link With Icon
+
+          <li className>
+            <a href>
+              <i className="material-icons">cloud</i>Seja Bem Vindo
             </a>
           </li>
           <li>
-            <a href="#!">Second Link</a>
+            <Link to = "/">
+            <p className="blue-text">Home</p>
+            </Link>
+
           </li>
           <li>
             <div className="divider" />
           </li>
           <li>
-            <a className="subheader">Subheader</a>
+            <Link to = "Noticias">
+
+            <p className="blue-text">Noticias</p>
+            </Link>
+
           </li>
           <li>
-            <a className="waves-effect" href="#!">
-              Third Link With Waves
-            </a>
+            <div className="divider" />
+          </li>
+          <li>
+            <Link to = "Classificados">
+              <p className="blue-text">Classificados</p>
+            </Link>
+          </li>
+          <li>
+            <div className="divider" />
+          </li>
+          <li>
+            <Link to = "Eventos">
+              <p className="blue-text">Eventos</p>
+            </Link>
+          </li>
+          <li>
+            <div className="divider" />
+          </li>
+          <li>
+            <Link to = "Empresas">
+              <p className="blue-text">Guia Empresarial</p>
+            </Link>
+          </li>
+          <li>
+            <div className="divider" />
           </li>
         </ul>
       </>

@@ -1,95 +1,76 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { format, parseISO } from 'date-fns';
 
-import { List, TituloEvento } from './styles';
+import pt from 'date-fns/locale/pt';
 
-export default class Eventos extends Component {
-  render() {
-    return (
-      <div className="row grey lighten-5">
-        <div className="container">
-          <div className="row">
-            <div className="col l6 s12">
-              <TituloEvento className="center">
-                Confira os eventos em sua Cidade
-              </TituloEvento>
-            </div>
-            <div className="col l6 hide-on-small-only" />
-          </div>
-          <List className="col l12">
-            <li className="col l4 s12">
-              <a href="https://facebook.com/Delfio.francisco.del">
-                <div className="card hoverable">
-                  <div className="card-image waves-effect waves-block waves-light">
-                    <img
-                      className="activator"
-                      src="https://images.sympla.com.br/5df1bee9ec76e-xs.png"
-                    />
-                  </div>
-                  <div className="card-content">
-                    <span className="card-title activator grey-text text-darken-4">
-                      Evento teste 123
-                      <i className="material-icons right">more_vert</i>
-                    </span>
-                    <p className="blue-text">25 de Dezembro</p>
-                  </div>
-                  {/* <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Evento teste 123<i class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div> */}
-                </div>
-              </a>
-            </li>
+import api from '../../services/api';
 
-            <li className="col l4 s12">
-              <a href="https://facebook.com/Delfio.francisco.del">
-                <div className="card hoverable">
-                  <div className="card-image waves-effect waves-block waves-light">
-                    <img
-                      className="activator"
-                      src="https://images.sympla.com.br/5df1bee9ec76e-xs.png"
-                    />
-                  </div>
-                  <div className="card-content">
-                    <span className="card-title activator grey-text text-darken-4">
-                      Evento teste 123
-                      <i className="material-icons right">more_vert</i>
-                    </span>
-                    <p className="blue-text">25 de Dezembro</p>
-                  </div>
-                  {/* <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Evento teste 123<i class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div> */}
-                </div>
-              </a>
-            </li>
+import Banner from '../../components/Banners';
 
-            <li className="col l4 s12">
-              <a href="https://facebook.com/Delfio.francisco.del">
-                <div className="card hoverable">
-                  <div className="card-image waves-effect waves-block waves-light">
-                    <img
-                      className="activator"
-                      src="https://images.sympla.com.br/5df1bee9ec76e-xs.png"
-                    />
-                  </div>
-                  <div className="card-content">
-                    <span className="card-title activator grey-text text-darken-4">
-                      Evento teste 123
-                      <i className="material-icons right">more_vert</i>
-                    </span>
-                    <p className="blue-text">25 de Dezembro</p>
-                  </div>
-                  {/* <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Evento teste 123<i class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div> */}
-                </div>
-              </a>
-            </li>
-          </List>
-        </div>
-      </div>
+import { List, TituloEvento, DivImg} from './styles';
+
+export default function Eventos() {
+
+  const [eventos, setEventos] = useState([]);
+
+  useEffect(() => {
+    async function loadEventos() {
+      const response = await api.get('/eventos')
+
+      setEventos(response.data)
+    }
+
+    loadEventos();
+  }, [])
+
+  async function handleHour(date){
+    const formate = await format(
+      parseISO(date),
+      "'Dia' dd 'de' MMM"
     );
+    return formate;
   }
+
+  return (
+      <div className="container">
+        <div className="row">
+          <Banner />
+          <div className="col l6 s12">
+            <h4 className="center">
+              Confira os eventos em sua Cidade
+            </h4>
+          </div>
+        </div>
+
+        <List className="row">
+          <div className="col s12">
+            {eventos.map(el => (
+              <li key="{el.id}" className="col s12 l4">
+                <a href={`evento/${el.id}`}>
+                  <DivImg className="col l12 s5" bg={el.imagem.url}/>
+                </a>
+                <section className="col s7 l12">
+                  <div className="col s10 left">
+                    <TituloEvento>{el.titulo}</TituloEvento>
+                  </div>
+                  <section className="col s2 right">
+                    <a href={`evento/${el.id}`}>
+                      <p className="blue-text" style={{marginTop: 20}}><i class="material-icons">more_vert</i></p>
+                    </a>
+                  </section>
+                  <section className="col s12">
+                    <div style={{marginTop: 15}} className="divider" />
+                  </section>
+                  <section>
+                    <p className="grey-text">{ format(parseISO(el.created_at),
+                        "'Dia' dd 'de' MMM")
+                      }</p>
+                  </section>
+                </section>
+              </li>
+            ))}
+          </div>
+        </List>
+      </div>
+  );
 }

@@ -4,10 +4,9 @@ import api from '../../services/api';
 
 import {
   TituloEmpresa,
-  List2,
+  List3,
   DivBannerDestaque,
   ImgBannerDestaque,
-  TtiutloEvento,
 } from './styles';
 
 export default function EmpresasDestaque() {
@@ -33,12 +32,12 @@ export default function EmpresasDestaque() {
             <h4 className="blue-text"> Empresas destaque </h4>
             <hr />
           </div>
-          <List2 key="sdfd">
+          <List3>
             {empDestaque.map(el => (
               <li key={el.id} className="col s12 l4">
                 <DivBannerDestaque className="col s5 l12">
                   <ImgBannerDestaque
-                    style={{ marginTop: -16 }}
+                    className="responsive-img"
                     src={el.imagem.url}
                     alt="Americanas"
                   />
@@ -55,7 +54,7 @@ export default function EmpresasDestaque() {
                 </section>
               </li>
             ))}
-          </List2>
+          </List3>
         </div>
       </div>
     </div>

@@ -70,6 +70,9 @@ export const LogoIMG = styled.img`
 
 export const DivInfo = styled.div`
 
+flex: 1;
+display: block
+
   h3 {
     margin-left: 25px;
     font-size: 2.3em;
@@ -91,8 +94,7 @@ export const DivInfo = styled.div`
   }
 
   h4 {
-    position:absolute;
-    bottom:0
+    margin-top: 2.7rem;
     font-size: 15px;
     font-weight: 500;
 

@@ -2,15 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
+import store from '../store';
+
+import Dashboard from '../pages/Dashboard';
+
 export default function RouteWrapper({
   component: Component,
   isPrivate = false,
+  painelControlle = false,
   ...rest
 }){
-  const signed = false;
+  const signed = store.getState().auth.signed;
+
+  console.tron.log(signed);
 
   if(!signed && isPrivate){
     return <Redirect to="/entrar" />
+  }
+
+  if(painelControlle && !signed && !isPrivate) {
+    return <Route component={Component} />
+  }
+
+  if(painelControlle && signed) {
+    return <Route component={Dashboard} {...rest} />
   }
 
   return (

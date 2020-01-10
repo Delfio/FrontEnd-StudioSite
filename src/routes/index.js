@@ -11,7 +11,7 @@ import Empresas from '../pages/Empresas';
 import Entrar from '../pages/Auth/Entrar';
 import Registrar from '../pages/Auth/Registrar';
 
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../pages/Dashboard/index';
 
 export default function Routes() {
   return (
@@ -23,9 +23,9 @@ export default function Routes() {
       <Route path="/Empresas" component={Empresas} />
 
       <Route path="/registrar" component={Registrar} />
-      <Route path="/entrar" component={Entrar} />
+      <Route path="/entrar" component={Entrar} painelControlle />
 
-      <Route path="/painel" component={Dashboard} isPrivate/>
+      <Route path="/painel" exact component={Dashboard} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

@@ -47,7 +47,7 @@ export default function Empresas () {
           {/* Empresa Destaque */}
           <List key="kkkk">
             <li className="row">
-              <a href="">
+              <a href={`empresa/${empresaDestaque.id}`}>
                 <DivEmpresaDestaque className="col s12">
                   <DivImg
                     className="col s12 l6"
@@ -73,7 +73,7 @@ export default function Empresas () {
                           color: 'white',
                           fontWeight: 'bold',
                         }}
-                        href=""
+                        href={`empresa/${empresaDestaque.id}`}>
                       >
                         {empresaDestaque.nome}
                       </a>
@@ -84,7 +84,7 @@ export default function Empresas () {
                     <p>
                       {empresaDestaque.descricao}
                     </p>
-                    <a href="">
+                    <a href={`tel:55-69${empresaDestaque.fone_contato}`}>
                       <i className="material-icons">phone</i>
                       {`(69) ${empresaDestaque.fone_contato} ${empresaDestaque.fone_contato2 ? `|| ${empresaDestaque.fone_contato2}` : ``}`}
                     </a>
@@ -121,7 +121,7 @@ export default function Empresas () {
                     <p className="truncate black-text">
                       {el.descricao}
                     </p>
-                    <a href="">
+                    <a href={`tel:55-69${el.fone_contato}`}>
                       <i className="material-icons">phone</i>
                       {`(69) ${el.fone_contato} ${el.fone_contato2 ? `|| ${el.fone_contato2}` : ``}`}
 

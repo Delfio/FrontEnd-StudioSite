@@ -17,7 +17,7 @@ export default function Main() {
   useEffect(() => {
     async function loadPrincipal(){
       const response = await api.get('/principal')
-      const data = response.data.map(item => (
+      response.data.map(item => (
         setLink(item.Info1.video),
         setInfos(item.Info2)
       ))
@@ -33,6 +33,7 @@ export default function Main() {
         <div className="col s12 l6">
           <div className="video-container">
             <iframe
+              title={link.title}
               width="853"
               height="480"
               src={link.link}

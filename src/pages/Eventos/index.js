@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
 
 import pt from 'date-fns/locale/pt';
@@ -22,14 +22,6 @@ export default function Eventos() {
 
     loadEventos();
   }, [])
-
-  async function handleHour(date){
-    const formate = await format(
-      parseISO(date),
-      "'Dia' dd 'de' MMM"
-    );
-    return formate;
-  }
 
   return (
       <div className="container">
@@ -63,7 +55,7 @@ export default function Eventos() {
                   </section>
                   <section>
                     <p className="grey-text">{ format(parseISO(el.created_at),
-                        "'Dia' dd 'de' MMM")
+                        "'Dia' dd 'de' MMM", {locale: pt})
                       }</p>
                   </section>
                 </section>

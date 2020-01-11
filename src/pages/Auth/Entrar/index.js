@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Form, Input } from '@rocketseat/unform';
@@ -18,6 +18,7 @@ const schema = Yup.object().shape({
 
 export default function Entrar() {
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
 
   function handleSubmit({ email, senha }){
     dispatch(signInRequest(email, senha));
@@ -33,17 +34,17 @@ export default function Entrar() {
               <div className="col s12 hide-on-small-only">
                 <h4 className="grey-text">Preencha os campos abaixo</h4>
               </div>
-              <div class="input-field col l12 s12">
-                <Input name="email" id="email" type="text" class="validate" />
-                <label for="email">Email</label>
+              <div className="input-field col l12 s12">
+                <Input name="email" id="email" type="text" className="validate" />
+                <label htmlFor="email">Email</label>
               </div>
-              <div class="input-field col l12 s12">
-                <Input name="senha" id="senha" type="password" class="validate" />
-                <label for="senha">Senha</label>
+              <div className="input-field col l12 s12">
+                <Input name="senha" id="senha" type="password" className="validate" />
+                <label htmlFor="senha">Senha</label>
               </div>
               <div className="col l12 s12">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Entrar
-                  <i class="material-icons right">send</i>
+                <button className="btn waves-effect waves-light" type="submit" name="action">{loading? 'Carregando...' : 'Acessar'}
+                  <i className="material-icons right">send</i>
                 </button>
                 <Link to="/registrar">
                   <p>Ainda não tenho conta</p>

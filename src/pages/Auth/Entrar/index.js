@@ -52,7 +52,7 @@ export default function Entrar() {
               </div>
             </Form>
           </div>
-          <div className="col l6 hide-on-med-only">
+          <div className="col l6 hide-on-med-and-down">
             <img width="100%" height="100%"  src="https://static.vecteezy.com/system/resources/previews/000/384/539/non_2x/vector-illustration-of-people-avatar-teamwork-concept.jpg"
              className="responsive-img" alt=""/>
           </div>

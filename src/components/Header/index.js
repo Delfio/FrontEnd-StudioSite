@@ -44,12 +44,13 @@ export default function Header (){
       <div className="navbar-fixed">
         <nav className="blue">
           <div className="nav-wrapper">
-            <a href="#"
-              data-target="mobile-demo"
-              className="sidenav-trigger hide-on-large-only"
+          <a
+            href="#"
+            data-target="mobile-demo"
+            className="sidenav-trigger hide-on-large-only"
             >
               <i className="material-icons">menu</i>
-            </a>
+          </a>
             <div className="container">
               <Link to="/">
                 <a href="#" className="brand-logo">Logo</a>
@@ -82,9 +83,8 @@ export default function Header (){
         </nav>
       </div>
       <ul id="mobile-demo" className="sidenav">
-
-        <li>
-          <a href="#">
+        <li className>
+          <a href>
             <i className="material-icons">cloud</i>Seja Bem Vindo
           </a>
         </li>
@@ -131,6 +131,21 @@ export default function Header (){
         <li>
           <div className="divider" />
         </li>
+        <li>
+          <Link to = "painel">
+            <p className="red-text">{logado ? 'Painel': 'Entrar'}</p>
+          </Link>
+        </li>
+        <li>
+          <div className="divider" />
+        </li>
+        {logado? null : (
+          <li>
+            <Link to = "registrar">
+              <p className="red-text">Registrar-se</p>
+            </Link>
+          </li>
+        )}
       </ul>
     </>
   );

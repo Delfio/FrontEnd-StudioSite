@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { List, DivBannerDestaque, ImgBannerDestaque } from './styles';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { routePrivate } from '../../store/modules/auth/actions'
 
 // import Menu from '../../components/Header';
@@ -17,7 +17,6 @@ import Empresas from './EmpresasDestaques';
 
 export default function Main() {
   const dispatch = useDispatch();
-  const isPrivate = useSelector(state => state.auth.isPrivate);
 
   const [infos, setInfos] = useState([])
   const [link, setLink] = useState('');

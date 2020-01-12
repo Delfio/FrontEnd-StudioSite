@@ -3,7 +3,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 
 import { ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { Router } from 'react-router-dom';
 
 import './config/ReactotronConfig';
@@ -15,10 +15,12 @@ import history from './services/history';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import GlobalStyle from './styles/global';
-import Header from './components/Header';
-import Footer from './components/Footer';
+// import Header from './components/Header';
+// import Footer from './components/Footer';
 
 function App() {
+
+  // const isPrivate = useSelector(state => state.auth.isPrivate);
 
   useEffect(() =>{
     document.addEventListener('DOMContentLoaded', function() {
@@ -34,11 +36,11 @@ function App() {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Router history={history}>
-          <Header />
+          {/* <Header /> */}
           <Routes />
           <ToastContainer autoClose={3000}/>
           <GlobalStyle />
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </PersistGate>
     </Provider>

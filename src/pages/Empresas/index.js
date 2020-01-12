@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { routePrivate } from '../../store/modules/auth/actions'
 
 import api from '../../services/api';
 
@@ -16,12 +18,16 @@ import {
 
 export default function Empresas () {
 
+  const dispatch = useDispatch();
+
   const [empresaDestaque, setEmpresaDestaque] = useState({});
   const [empresaNormal, setEmpresaNormal] = useState([]);
 
   const [video, setVideo] = useState({})
 
   useEffect(() => {
+    dispatch(routePrivate(false));
+
     async function loadEmpresas() {
       const response = await api.get('/empresas');
       setEmpresaDestaque(response.data.EmpresaDestaque);

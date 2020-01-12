@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 export default function Header (){
-  const [isPrivate, setIsprivate] = useState(useSelector(state => state.auth.isPrivate));
+  const isPrivate = useSelector(state => state.auth.isPrivate)
 
   useEffect(() => {
     document.addEventListener('DOMContentLoaded', function() {

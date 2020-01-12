@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { format, parseISO } from 'date-fns';
 
+import { useDispatch } from 'react-redux';
+import { routePrivate } from '../../store/modules/auth/actions'
+
+
+import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import api from '../../services/api';
@@ -10,10 +14,12 @@ import Banner from '../../components/Banners';
 import { List, TituloEvento, DivImg} from './styles';
 
 export default function Eventos() {
+  const dispatch = useDispatch();
 
   const [eventos, setEventos] = useState([]);
 
   useEffect(() => {
+    dispatch(routePrivate(false));
     async function loadEventos() {
       const response = await api.get('/eventos')
 

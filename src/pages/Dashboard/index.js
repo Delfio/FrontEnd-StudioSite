@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 
 import { routePrivate } from '../../store/modules/auth/actions'
 
-import Menu from './MenuLateral';
 export default function Dashboard() {
   const dispatch = useDispatch();
 
@@ -15,13 +14,13 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <div class="row">
+    <div className="row">
 
-      <div class="col s12 m4 l3">
-        <Menu />
+      <div className="col s12 m4 l3">
+
       </div>
 
-      <div class="col s12 m8 l9">
+      <div className="col s12 m8 l9">
 
       </div>
 

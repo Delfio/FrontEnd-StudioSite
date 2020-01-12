@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { routePrivate } from '../../store/modules/auth/actions'
+
+
 import api from '../../services/api';
 
 // import Menu from '../../components/Header';
@@ -15,6 +19,7 @@ import {
 } from './styles';
 
 export default function Noticias() {
+  const dispatch = useDispatch();
 
   const [noticia1 , SetNoticia1] = useState({});
   const [noticia2 , SetNoticia2] = useState([]);
@@ -26,6 +31,7 @@ export default function Noticias() {
   const [noticia8 , SetNoticia8] = useState([]);
 
   useEffect(() => {
+    dispatch(routePrivate(false));
     async function loadNoticias() {
       const response = await api.get('/noticias')
 

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import M from 'materialize-css/dist/js/materialize.min.js';
+
 import { ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux'
@@ -17,9 +19,20 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
+
+  useEffect(() =>{
+    document.addEventListener('DOMContentLoaded', function() {
+      const elems = document.querySelectorAll('.sidenav');
+      const instances = M.Sidenav.init(elems, {
+        edge: "left",
+        inDuration: 250
+      });
+    });
+  }, [])
+
   return (
     <Provider store={store}>
-        <PersistGate persistor={persistor}>
+      <PersistGate persistor={persistor}>
         <Router history={history}>
           <Header />
           <Routes />

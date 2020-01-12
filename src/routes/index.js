@@ -24,7 +24,6 @@ export default function Routes() {
 
       <Route path="/registrar" component={Registrar} />
       <Route path="/entrar" component={Entrar} painelControlle />
-
       <Route path="/painel" exact component={Dashboard} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />

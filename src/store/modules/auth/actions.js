@@ -1,5 +1,4 @@
 export function signInRequest(email, senha){
-  console.tron.log(email, senha)
   return {
     type: '@auth/SIGN_IN_REQUEST',
     payload: {email, senha},
@@ -24,4 +23,11 @@ export function signFailure(){
   return {
     type: '@auth/SIGN_FAILURE',
   };
+}
+
+export function routePrivate( isPrivate ) {
+  return {
+    type: '@auth/IS_PRIVATE',
+    payload: { isPrivate },
+  }
 }

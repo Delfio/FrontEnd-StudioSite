@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import api from '../../services/api';
 
+// import Menu from '../../components/Header';
+// import Footer from '../../components/Footer';
+
 import {
   TxtNoticiaPrincipal,
   DivNoticia,
@@ -42,6 +45,7 @@ export default function Noticias() {
   }, [])
 
   return (
+    <>
     <div className="row">
       <div className="container">
         <div className="row">
@@ -202,5 +206,7 @@ export default function Noticias() {
         </div>
       </div>
     </div>
+
+    </>
   );
 }

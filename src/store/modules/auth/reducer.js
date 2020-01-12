@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   signed: false,
   loading: false,
   adm: false,
+  isPrivate: false,
 }
 
 export default function auth(state = INITIAL_STATE, action){
@@ -13,8 +14,10 @@ export default function auth(state = INITIAL_STATE, action){
 
       case '@auth/SIGN_IN_REQUEST': {
         draft.loading = true;
+        draft.isPrivate = false;
         break;
       }
+
       case '@auth/SIGN_IN_SUCESS': {
         draft.token = action.payload.token;
         draft.adm = action.payload.user.ADM;
@@ -25,6 +28,12 @@ export default function auth(state = INITIAL_STATE, action){
 
       case '@auth/SIGN_FAILURE': {
         draft.loading = false;
+        draft.isPrivate = false;
+        break;
+      }
+
+      case '@auth/IS_PRIVATE': {
+        draft.isPrivate = action.payload.isPrivate;
         break;
       }
 

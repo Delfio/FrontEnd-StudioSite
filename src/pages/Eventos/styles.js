@@ -25,7 +25,7 @@ export const List = styled.ul`
     }
 
     @media (max-width: 980px) {
-      border-top: solid 1px #eee
+      border-top: solid 1px #eee;
       background: none;
       margin-top: 15px;
     }

@@ -49,6 +49,9 @@ export default function Entrar() {
                 <Link to="/registrar">
                   <p>Ainda não tenho conta</p>
                 </Link>
+                {/* <Link to="/">
+                  <p>Retornar ao site</p>
+                </Link> */}
               </div>
             </Form>
           </div>

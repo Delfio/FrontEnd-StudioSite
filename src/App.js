@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 import { ToastContainer } from 'react-toastify';
@@ -19,13 +19,12 @@ import GlobalStyle from './styles/global';
 // import Footer from './components/Footer';
 
 function App() {
-
   // const isPrivate = useSelector(state => state.auth.isPrivate);
 
   useEffect(() =>{
-    document.addEventListener('DOMContentLoaded', function() {
-      const elems = document.querySelectorAll('.sidenav');
-      const instances = M.Sidenav.init(elems, {
+    document.addEventListener('DOMContentLoaded', async function() {
+      const elems = await document.querySelectorAll('.sidenav');
+      await M.Sidenav.init(elems, {
         edge: "left",
         inDuration: 250
       });

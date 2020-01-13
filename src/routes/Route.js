@@ -27,15 +27,11 @@ export default function RouteWrapper({
     return <Redirect to="/entrar" />
   }
 
-  if(painelControlle && !signed && !isPrivate) {
-    return <Route component={Component} />
-  }
-
   if(painelControlle && signed) {
-    return <Route component={Dashboard} {...rest} />
+    return <Redirect to= "/painel"/>
   }
 
-  const Layout = routePrivate ? AuthLayout : DefaultLayout;
+  const Layout = isPrivate ? AuthLayout : DefaultLayout;
 
   return (
     <Route

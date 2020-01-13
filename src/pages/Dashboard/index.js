@@ -1,14 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
 
-import {Container, Div } from './styles';
+import {Container, Div, Ul2 } from './styles';
 
 export default function Dashboard() {
 
   const adm = useSelector(state => state.auth.adm);
+
+  const user = useSelector(state => state.user.profile);
 
   return (
     <div className="container">
@@ -19,6 +20,7 @@ export default function Dashboard() {
         </div>
         <div className="row">
           {adm? (
+            <>
             <Container className="col s12">
             <li style={{background: 'linear-gradient(45deg, rgba(4, 139, 209), rgba(35, 193, 255))'}} className="col m6 l3 s12">
               <i className="material-icons white-text">add</i>
@@ -58,9 +60,156 @@ export default function Dashboard() {
               </div>
             </li>
           </Container>
+          <br/>
 
+          <div className="row">
+            <h2 className="blue-text">Sobre este Site</h2>
+            <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <br/>
+            <h4>Mais informações:</h4>
+            <hr/>
+            <div className="row">
+              <div className="col s6">
+                <h6 className="red-text center">Contato Técnico</h6>
+              </div>
+              <div className="col s6">
+                <h6 className="red-text center">Contato Administrativo</h6>
+              </div>
+            </div>
+            <div style={{alignItems: 'center', display: 'flex', justifyContent: 'center'}} className="col s6">
+              <i className="material-icons black-text">local_phone</i>
+              <a href="tel:69993014603">(69) 993014603</a>
+              <br/>
+            </div>
+
+            <div style={{alignItems: 'center', display: 'flex', justifyContent: 'center'}} className="col s6">
+              <i className="material-icons black-text">local_phone</i>
+              <a href="tel:69993014603">(69) 993014603</a>
+              <br/>
+            </div>
+          </div>
+          <br/>
+
+          <div className="row">
+            <div className="col s12 m12 l6">
+              <Ul2 className="card">
+                <li>
+                  <i className="medium material-icons blue-text">account_circle</i>
+                  <h5>{user.username}</h5>
+                </li>
+                <li className="divider" />
+                <li>
+                  <i className="material-icons black-text">phone</i>
+                  <h6 className="bold">
+                    {user.phone}
+                  </h6>
+                </li>
+                <li className="divider" />
+                <li>
+                  <i className="material-icons black-text">mail</i>
+                  <h6>
+                    {user.email}
+                  </h6>
+                </li>
+                <li className="divider" />
+                <li>
+                  <i className="material-icons black-text">monetization_on</i>
+                  <h6>
+                    {`Anuncios: ${user.anuncios}`}
+                  </h6>
+                </li>
+                <li className="divider" />
+
+              </Ul2>
+            </div>
+            <div className="col s12 m12 l6">
+              <h4 className="blue-text">Informação Util</h4>
+              <p>Caso tenha algum problema, atualize a página!
+                <br/>
+                Se o problema persistir entre em contato com nosso suporte técnico
+                </p>
+            </div>
+          </div>
+
+          </>
           ): (
-            <h2>sdfsdf</h2>
+            <>
+            <br/>
+            <div className="row">
+              <h2 className="blue-text">Sobre este Site</h2>
+              <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+              <br/>
+              <h4>Mais informações:</h4>
+              <hr/>
+              <div className="row">
+                <div className="col s6">
+                  <h6 className="red-text center">Contato Técnico</h6>
+                </div>
+                <div className="col s6">
+                  <h6 className="red-text center">Contato Administrativo</h6>
+                </div>
+              </div>
+              <div style={{alignItems: 'center', display: 'flex', justifyContent: 'center'}} className="col s6">
+                <i className="material-icons black-text">local_phone</i>
+                <a href="tel:69993014603">(69) 993014603</a>
+                <br/>
+              </div>
+
+              <div style={{alignItems: 'center', display: 'flex', justifyContent: 'center'}} className="col s6">
+                <i className="material-icons black-text">local_phone</i>
+                <a href="tel:69993014603">(69) 993014603</a>
+                <br/>
+              </div>
+            </div>
+            <br/>
+            {/*sdfasdf */}
+
+            <br/>
+
+            <div className="row">
+              <div className="col s12 m12 l6">
+                <Ul2 className="card">
+                  <li>
+                    <i className="medium material-icons blue-text">account_circle</i>
+                    <h5>{user.username}</h5>
+                  </li>
+                  <li className="divider" />
+                  <li>
+                  <i className="material-icons black-text">phone</i>
+                  <h6 className="bold">
+                    {user.phone}
+                  </h6>
+                </li>
+                <li className="divider" />
+                <li>
+                  <i className="material-icons black-text">mail</i>
+                  <h6>
+                    {user.email}
+                  </h6>
+                </li>
+                <li className="divider" />
+                <li>
+                  <i className="material-icons black-text">monetization_on</i>
+                  <h6>
+                    {`Anuncios: ${user.anuncios}`}
+                  </h6>
+                </li>
+                <li className="divider" />
+                </Ul2>
+              </div>
+              <div className="col s12 m12 l6">
+                <h4 className="blue-text">Suas informações</h4>
+                <p>Caso tenha algum problema, atualize a página!
+                  <br/>
+                  Se o problema persistir entre em contato com nosso suporte técnico
+                  </p>
+              </div>
+            </div>
+          </>
           )
         }
         </div>

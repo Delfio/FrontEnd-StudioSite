@@ -40,3 +40,20 @@ export const Div = styled.div`
     }
   }
 `
+export const Ul2 = styled.ul`
+  li {
+
+    justify-content: safe;
+    margin: 9px;
+    display: flex;
+    align-items: center;
+
+    h5 {
+      padding-left: 30px;
+    }
+    h6 {
+      padding-left: 30px;
+
+    }
+  }
+`;

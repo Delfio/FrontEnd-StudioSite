@@ -2,6 +2,10 @@ import React from 'react';
 import * as Yup from 'yup';
 import { Form, Input } from '@rocketseat/unform';
 
+import { useDispatch } from 'react-redux';
+
+import {cadastroClassificadoRequest} from '../../../store/modules/user/actions'
+
 import { Container } from './styles';
 
 const schema = Yup.object().shape({
@@ -20,6 +24,12 @@ const schema = Yup.object().shape({
 })
 
 export default function Classificados() {
+  const dispatch = useDispatch();
+
+  async function handleSubmit(data){
+    await dispatch(cadastroClassificadoRequest(data))
+  }
+
   return (
     <div className="container">
       <Container className="col s12">
@@ -29,7 +39,7 @@ export default function Classificados() {
         <h6>2. Selecione as imagens desejadas</h6>
         <h6>3. Aguarde a aprovação do seu anúncio</h6>
         <br/>
-        <Form schema={schema} className="row">
+        <Form schema={schema} className="row" onSubmit={handleSubmit}>
           <div className="col s12 hide-on-small-only">
             <h4 className="grey-text">Preencha os campos abaixo</h4>
           </div>
@@ -42,7 +52,7 @@ export default function Classificados() {
             <label htmlFor="titulo">Descrição do seu anuncio</label>
           </div>
           <div className="input-field col l6 s6">
-            <Input name="fone_contato" id="fone" type="number" min="6" max="9" className="validate" />
+            <Input name="fone_contato" id="fone" type="number" min="6" className="validate" />
             <label htmlFor="fone">Fone para contato</label>
           </div>
           <div className="input-field col l6 s6">

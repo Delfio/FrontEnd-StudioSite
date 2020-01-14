@@ -13,6 +13,8 @@ import Registrar from '../pages/Auth/Registrar';
 
 import Dashboard from '../pages/Dashboard/index';
 
+import PostClassificado from '../pages/Dashboard/Classificados';
+
 export default function Routes() {
   return (
     <Switch>
@@ -24,7 +26,11 @@ export default function Routes() {
 
       <Route path="/registrar" component={Registrar} />
       <Route path="/entrar" component={Entrar} painelControlle />
+
+
       <Route path="/painel" exact component={Dashboard} isPrivate />
+
+      <Route path="/postClassificado" exact component={PostClassificado} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

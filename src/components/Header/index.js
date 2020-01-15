@@ -59,22 +59,22 @@ export default function Header (){
                 </Link>
                 <ul className="right hide-on-med-and-down">
                   <li>
-                    <Link to="Noticias">
+                    <Link to="/Noticias">
                       <a href="#">Noticias</a>
                     </Link>
                   </li>
                   <li>
-                    <Link to = "Classificados">
+                    <Link to = "/Classificados">
                       <a href="#">Classificados</a>
                     </Link>
                   </li>
                   <li>
-                    <Link to="Eventos">
+                    <Link to="/Eventos">
                       <a href="#">Eventos</a>
                     </Link>
                   </li>
                   <li>
-                    <Link to = "Empresas">
+                    <Link to = "/Empresas">
                       <a href="#">Tudo aqui empresa</a>
                     </Link>
                   </li>

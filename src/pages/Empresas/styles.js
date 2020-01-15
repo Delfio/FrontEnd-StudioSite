@@ -34,8 +34,8 @@ export const DivEmpresaDestaque = styled.section`
 
   &:hover {
     transform: scale(1.02);
-    // border: solid #eee 1px;
-    // border-radius: 5px;
+    border: solid #eee 1px;
+    border-radius: 5px;
     box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
   }
 

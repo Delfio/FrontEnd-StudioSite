@@ -28,7 +28,8 @@ export default function Classificados() {
         <div className="col l8 s12">
           <Container key="name">
             {anuncios.map(el => (
-              <a href={`classificado/${el.id}`}>
+              el.aprovado? (
+                <a href={`classificado/${el.id}`}>
                 <li className="row">
                   <div className="col s12">
                     <section className="col l4 s5">
@@ -56,6 +57,7 @@ export default function Classificados() {
                   </div>
                 </li>
               </a>
+              ): null
             ))}
 
           </Container>

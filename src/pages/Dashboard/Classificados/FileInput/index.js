@@ -106,7 +106,7 @@ export default function FileInput(props) {
             </>
             ): (
               <>
-            <h2 className="blue-text">Você fez {imagens} Uploads</h2>
+            <h2 className="blue-text center">Você fez {imagens} Uploads</h2>
             <div className="row">
               <Ul className="container">
                 <li className="col s6 l6 center">

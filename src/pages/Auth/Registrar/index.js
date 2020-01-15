@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 

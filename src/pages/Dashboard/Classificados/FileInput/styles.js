@@ -7,9 +7,10 @@ export const Container = styled.div`
 `;
 
 export const Ul = styled.ul`
-  display: table;
+  display: block;
   flex: 1;
   flex-direction: row;
+  justify-content: center;
   li {
     display: flex;
     flex-direction: column;

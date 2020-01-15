@@ -87,38 +87,42 @@ export default function FileInput(props) {
             {!imageLimit ? (
               <>
               <h3 className="red-text">Você já fez os 3 uploads permitidos</h3>
-              <Ul className="row">
-              <li className="col s6 l6">
-                <h4>Titulo</h4>
-                <p>* {classificado.titulo}</p>
-              </li>
-              <li className="col s6 l6">
-                <h4>Preço</h4>
-                <p>R$: {classificado.preco}</p>
-              </li>
-              <li className="col s12 l12">
-                <h4>Descrição</h4>
-                <p>* {classificado.descricao}</p>
-              </li>
-            </Ul>
+              <div className="row">
+                <Ul className="container">
+                  <li className="col s6 l6 center">
+                    <h4>Titulo</h4>
+                    <p>* {classificado.titulo}</p>
+                  </li>
+                  <li className="col s6 l6">
+                    <h4>Preço</h4>
+                    <p>R$: {classificado.preco}</p>
+                  </li>
+                  <li className="col s12 l12">
+                    <h4>Descrição</h4>
+                    <p>* {classificado.descricao}</p>
+                  </li>
+                </Ul>
+              </div>
             </>
             ): (
               <>
             <h2 className="blue-text">Você fez {imagens} Uploads</h2>
-            <Ul className="row">
-              <li className="col s6 l6">
-                <h4>Titulo</h4>
-                <p>* {classificado.titulo}</p>
-              </li>
-              <li className="col s6 l6">
-                <h4>Preço</h4>
-                <p>R$: {classificado.preco}</p>
-              </li>
-              <li className="col s12 l12">
-                <h4>Descrição</h4>
-                <p>* {classificado.descricao}</p>
-              </li>
-            </Ul>
+            <div className="row">
+              <Ul className="container">
+                <li className="col s6 l6 center">
+                  <h4>Titulo</h4>
+                  <p>* {classificado.titulo}</p>
+                </li>
+                <li className="col s6 l6">
+                  <h4>Preço</h4>
+                  <p>R$: {classificado.preco}</p>
+                </li>
+                <li className="col s12 l12">
+                  <h4>Descrição</h4>
+                  <p>* {classificado.descricao}</p>
+                </li>
+              </Ul>
+            </div>
             </>
             )}
           </h4>

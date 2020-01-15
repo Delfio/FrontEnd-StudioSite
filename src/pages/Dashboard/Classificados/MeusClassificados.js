@@ -39,13 +39,13 @@ export default function Classificados() {
         <tbody>
 
             {classificado.map( el => (
-              <tr>
+              <tr key={el.id}>
                 <td>{el.titulo}</td>
                 <td>{el.created_at}</td>
                 <td>{el.aprovado ? (
-                  <i class="material-icons small green-text">done</i>
+                  <i className="material-icons small green-text">done</i>
                 ): (
-                  <i class="material-icons small red-text">block</i>
+                  <i className="material-icons small red-text">block</i>
                 )}</td>
                 <td>{
                   <Link to={`editClassificado/${el.id}`}>
@@ -56,6 +56,22 @@ export default function Classificados() {
             ))}
         </tbody>
       </table>
+        <br/>
+        <h4>Legenda:</h4>
+        <div className="row">
+          <div style={{display: 'flex', alignItems: 'center'}} className="col s6">
+            <i className="material-icons small green-text">done</i>
+            <p className="black-text"> = Aprovado</p>
+          </div>
+          <div style={{display: 'flex', alignItems: 'center'}} className="col s6">
+            <i className="material-icons small red-text">block</i>
+            <p className="black-text"> = Ainda não aprovado</p>
+          </div>
+        </div>
+        <hr/>
+        <p>Caso seu anuncio esteja demorando para ser aceito, Favor Verifique se o mesmo não
+        contém alguma informação errada.
+        </p>
       </Container>
     </div>
   );

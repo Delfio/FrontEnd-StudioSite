@@ -16,6 +16,8 @@ import Dashboard from '../pages/Dashboard/index';
 import PostClassificado from '../pages/Dashboard/Classificados';
 import ImageClassificado from '../pages/Dashboard/Classificados/FileInput';
 
+import MeusClassificados from '../pages/Dashboard/Classificados/MeusClassificados';
+
 export default function Routes() {
   return (
     <Switch>
@@ -32,8 +34,9 @@ export default function Routes() {
       <Route path="/painel" exact component={Dashboard} isPrivate />
 
       <Route path="/postClassificado" exact component={PostClassificado} isPrivate />
-
       <Route path="/postClassificado/:id/:user_id" exact component={ImageClassificado} isPrivate />
+
+      <Route path="/meusClassificados" exact component={MeusClassificados} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

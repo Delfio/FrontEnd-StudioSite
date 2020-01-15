@@ -1,17 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import api from '../../../../services/api';
 
-import { Container } from './styles';
+import { Container, Ul } from './styles';
 
 export default function FileInput(props) {
 
   const [permitido, setPermissao] = useState(false);
   const [imageLimit, setImageLimit] = useState(false);
+
+  const [ imagens, setImagens ] = useState(0);
+
+  const [classificado, setClassificado] = useState({});
 
   const { id } = props.match.params;
   const { user_id } = props.match.params;
@@ -26,27 +29,35 @@ export default function FileInput(props) {
         setPermissao(true)
       }
       const response = await api.get(`/classificados/${id}`)
+
+      setClassificado(response.data);
+
       const {imagens} = response.data;
 
-      if(imagens.length > 4){
+      if(imagens.length >= 3){
         setImageLimit(false)
-      }else(
+
+      }else{
         setImageLimit(true)
-      )
+        setImagens(imagens.length)
+      }
+
     }
 
     verifyPermission()
   }, [])
 
-  async function handleSubmit(files, allFiles) {
+  const getUploadParams = async ({ file, meta }) => {
+    const body = new FormData()
+    body.append('fileField', file)
+
     const data = new FormData()
-    files.map(f => {
-      console.log(f)
-      console.log(data.append('imagens_cadastro', f.file))
-      // const response = await api.post(`classificados/${id}/imagem`, {})
-    })
-    // console.log(files.map(f => f.meta))
-    allFiles.forEach(f => f.remove())
+
+    data.append('imagens_cadastro', file);
+    api.post(`classificados/${id}/imagem`, data);
+    setImagens(+1)
+
+    return { url: 'https://httpbin.org/post', body }
   }
 
   return (
@@ -63,17 +74,57 @@ export default function FileInput(props) {
         <br/>
           <Dropzone
             disabled={!imageLimit}
-            inputWithFilesContent="Adicionar imagem"
+            getUploadParams={getUploadParams}
+            preview="Adicionar imagem"
             inputContent="Selecione ou arraste imagem"
             submitButtonContent="Enviar"
-            onSubmit={handleSubmit}
             accept="image/*"
             maxSizeBytes={2048*2048}
             maxFiles={3}
           />
+          <br/>
+          <h4>
+            {!imageLimit ? (
+              <>
+              <h3 className="red-text">Você já fez os 3 uploads permitidos</h3>
+              <Ul className="row">
+              <li className="col s6 l6">
+                <h4>Titulo</h4>
+                <p>* {classificado.titulo}</p>
+              </li>
+              <li className="col s6 l6">
+                <h4>Preço</h4>
+                <p>R$: {classificado.preco}</p>
+              </li>
+              <li className="col s12 l12">
+                <h4>Descrição</h4>
+                <p>* {classificado.descricao}</p>
+              </li>
+            </Ul>
+            </>
+            ): (
+              <>
+            <h2 className="blue-text">Você fez {imagens} Uploads</h2>
+            <Ul className="row">
+              <li className="col s6 l6">
+                <h4>Titulo</h4>
+                <p>* {classificado.titulo}</p>
+              </li>
+              <li className="col s6 l6">
+                <h4>Preço</h4>
+                <p>R$: {classificado.preco}</p>
+              </li>
+              <li className="col s12 l12">
+                <h4>Descrição</h4>
+                <p>* {classificado.descricao}</p>
+              </li>
+            </Ul>
+            </>
+            )}
+          </h4>
         </Container>
       ): (
-        <h2>sdf</h2>
+        <h2>404 NOT FOUND</h2>
       )}
 
     </div>

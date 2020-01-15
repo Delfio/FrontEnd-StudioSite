@@ -59,10 +59,6 @@ export default function Classificados() {
             <Input name="preco" id="price" type="number" className="validate" min="0.00" max="10000.00" step="0.01"/>
             <label htmlFor="price">Preço: "55.00"</label>
           </div>
-          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}} className="col s12">
-            <h5 className="black-text">Dica: </h5>
-            <h5 className="red-text"> Utilize PONTOS '.' ao invés de virgurlas ',' nos preços</h5>
-          </div>
           <div className="col s12">
             <button className="btn waves-effect waves-light" type="submit" name="action">Confirmar
               <i className="material-icons right">send</i>

@@ -15,8 +15,8 @@ import Dashboard from '../pages/Dashboard/index';
 
 import PostClassificado from '../pages/Dashboard/Classificados';
 import ImageClassificado from '../pages/Dashboard/Classificados/FileInput';
-
 import MeusClassificados from '../pages/Dashboard/Classificados/MeusClassificados';
+
 import EditarClassificado from '../pages/Dashboard/Classificados/EditarClassificado';
 import EditarImagem from '../pages/Dashboard/Classificados/editarImagem';
 
@@ -33,7 +33,7 @@ export default function Routes() {
       <Route path="/entrar" component={Entrar} painelControlle />
 
 
-      <Route path="/painel" exact component={Dashboard} isPrivate />
+      <Route path="/painel" component={Dashboard} isPrivate />
 
       <Route path="/postClassificado" exact component={PostClassificado} isPrivate />
       <Route path="/postClassificado/:id/:user_id" exact component={ImageClassificado} isPrivate />

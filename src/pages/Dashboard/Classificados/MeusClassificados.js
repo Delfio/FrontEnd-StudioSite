@@ -7,11 +7,9 @@ import api from '../../../services/api';
 
 import { Container } from './styles';
 
-export default function Classificados() {
+export default function MyClassificados() {
 
   const [classificado, setClassificado] = useState([]);
-
-  const user = useSelector(state => state.user.profile);
 
   useEffect(() => {
     async function ladClassificados() {

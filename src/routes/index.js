@@ -19,6 +19,9 @@ import MeusClassificados from '../pages/Dashboard/Classificados/MeusClassificado
 
 import EditarClassificado from '../pages/Dashboard/Classificados/EditarClassificado';
 import EditarImagem from '../pages/Dashboard/Classificados/editarImagem';
+import TodosOsClassificados from '../pages/Dashboard/Classificados/TodosOsClassificados';
+
+import PreviewClassificado from '../pages/Dashboard/Classificados/PreviewClassificado';
 
 export default function Routes() {
   return (
@@ -44,6 +47,9 @@ export default function Routes() {
       <Route path="/editClassificado/:id/editarImagem/:imagem_id" exact component={EditarImagem} isPrivate />
 
       <Route path="/editClassificado/postClassificado/:id/:user_id" exact component={ImageClassificado} isPrivate />
+      <Route path="/allClassificados" exact component={TodosOsClassificados} isPrivate />
+
+      <Route path="/previewClassificado/:id" exact component={PreviewClassificado} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

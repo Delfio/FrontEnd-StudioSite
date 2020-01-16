@@ -6,7 +6,7 @@ import api from '../../../services/api';
 
 import { Container } from './styles';
 
-export default function Classificados(props) {
+export default function EditImage(props) {
 
   const [imagem, setImagem] = useState({});
 
@@ -24,9 +24,8 @@ export default function Classificados(props) {
         }
       })
     }
-
     loadImages();
-  }, [imagem])
+  }, [])
 
   const getUploadParams = async ({ file, meta }) => {
     const body = new FormData()

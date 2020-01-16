@@ -26,7 +26,7 @@ const schema = Yup.object().shape({
     .max(7, 'Maximo de 7 digitos'),
 })
 
-export default function Classificados(props) {
+export default function EditClassificado(props) {
 
   const [classificado, setClassificado] = useState({})
   const [imagens, setImagens] = useState([])

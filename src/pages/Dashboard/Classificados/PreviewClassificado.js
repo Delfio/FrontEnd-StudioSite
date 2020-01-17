@@ -12,6 +12,9 @@ import { Link } from 'react-router-dom';
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.slider');
     var instances = M.Slider.init(elems, {});
+
+    var img = document.querySelectorAll('.materialboxed');
+    var imgInstance = M.Materialbox.init(img, {})
   });
 
 
@@ -54,30 +57,74 @@ export default function Classificados(props) {
         <h6>* Esta é uma preview de como o classificado vai ficar na página principal</h6>
         <br/>
         <div className="row">
-          <div className="col s12 l8">
+          <>
+          <div className="col s12 l8 hide-on-small-only">
             <div className="slider card">
-              <ul className="slides">
-                <li>
-                  <img className="" src={img1.url} />
+              <ul className="slides ">
+                {console.log(classificado.imagens)}
+                {img1 ? (
+                  <>
+                  <li>
+                  <img className="materialboxed responsive-img" style={{display: 'block', position: 'relative'}} width="650" src={img1.url} />
 
                 </li>
                 <li>
-                  <img className="" src={img2.url} />
+                  <img className="materialboxed responsive-img" style={{display: 'block', position: 'relative', marginTop: 'inherit'}} width="650" src={img2.url} />
 
                 </li>
                 <li>
-                  <img className="" src={img3.url} />
+                  <img className="materialboxed responsive-img" style={{display: 'block', position: 'relative'}} width="650"  src={img3.url} />
 
                 </li>
+                </>
+                ): null}
               </ul>
             </div>
+          </div>
+          {/* Mobile */}
+          <div className="col s12 l8 hide-on-large-only">
+            <div className="slider card">
+              <ul className="slides ">
+                {console.log(classificado.imagens)}
+                {img1 ? (
+                  <>
+                  <li>
+                  <img style={{minWidth: 250, maxHeight: 450, width: 'auto'}} className="responsive-img" src={img1.url} />
+
+                </li>
+                <li>
+                  <img style={{minWidth: 250, maxHeight: 450}} className="responsive-img"  src={img2.url} />
+
+                </li>
+                <li style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <img style={{
+                    minWidth: 250,
+                    maxHeight: 450,
+                    width: 'auto',
+                    right: 'auto',
+                    left: 'auto',
+                    display: 'flex',
+                    position: 'relative',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    imageOrientation: 'center'
+                    }} className="responsive-img"  src={img3.url} />
+
+                </li>
+                </>
+                ): null}
+              </ul>
+            </div>
+          </div>
+          <div style={{marginTop: -15}} className="col s12">
+          {classificado.preco? (
+                <h5 className="black-text">R$: {classificado.preco}</h5>
+              ): null}
           </div>
           <div className="col s12 l12">
             <div style={{alignItems: 'baseline', display: 'flex'}} className="col s12">
               <h1 className="blue-text">{classificado.titulo}</h1>
-              {classificado.preco? (
-                <h5 style={{marginLeft: 25}} className="red-text">R$: {classificado.preco}</h5>
-              ): null}
+
             </div>
             <div className="col s12">
               <p style={{marginTop: -25}} className="grey-text">{data}</p>
@@ -94,6 +141,7 @@ export default function Classificados(props) {
               </div>
             </div>
           </div>
+          </>
         </div>
       </Container>
     </div>

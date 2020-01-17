@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 
-import { Link } from 'react-router-dom';
-
 import api from '../../../services/api';
 
 import { Container } from './styles';
@@ -88,9 +86,9 @@ export default function AllClassificados() {
                   </button>
                 )}</td>
                 <td>
-                  <Link to={`/previewClassificado/${el.id}`}>
+                  <a href={`/previewClassificado/${el.id}`}>
                     Detalhes
-                  </Link>
+                  </a>
                 </td>
               </tr>
             ))}

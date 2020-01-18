@@ -13,6 +13,7 @@ import Registrar from '../pages/Auth/Registrar';
 
 import Dashboard from '../pages/Dashboard/index';
 
+//Classificado
 import PostClassificado from '../pages/Dashboard/Classificados';
 import ImageClassificado from '../pages/Dashboard/Classificados/FileInput';
 import MeusClassificados from '../pages/Dashboard/Classificados/MeusClassificados';
@@ -23,9 +24,19 @@ import TodosOsClassificados from '../pages/Dashboard/Classificados/TodosOsClassi
 
 import PreviewClassificado from '../pages/Dashboard/Classificados/PreviewClassificado';
 
+/* Classificado */
+
+/*Details */
+
+import DetailsClassificado from '../pages/Details/Classificado';
+
+/*Details */
+
+
 export default function Routes() {
   return (
     <Switch>
+{/*Site */}
       <Route path="/" exact component={Home} />
       <Route path="/Noticias" component={Noticias} />
       <Route path="/Classificados" component={Classificados} />
@@ -37,7 +48,16 @@ export default function Routes() {
 
 
       <Route path="/painel" component={Dashboard} isPrivate />
+{/*Site */}
 
+{/* Details */}
+
+      <Route path="/classificado/:id" component={DetailsClassificado} />
+
+
+{/* Details */}
+
+{/*Classificado PAINEL */}
       <Route path="/postClassificado" exact component={PostClassificado} isPrivate />
       <Route path="/postClassificado/:id/:user_id" exact component={ImageClassificado} isPrivate />
 
@@ -50,6 +70,7 @@ export default function Routes() {
       <Route path="/allClassificados" exact component={TodosOsClassificados} isPrivate />
 
       <Route path="/previewClassificado/:id" exact component={PreviewClassificado} isPrivate />
+{/*Classificado */}
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

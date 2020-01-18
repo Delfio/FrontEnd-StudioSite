@@ -35,9 +35,15 @@ export default function Classificados(props) {
       const response = await api.get(`/classificados/${id}`)
       setClassificado(response.data);
 
-      setImg1(response.data.imagens[0])
-      setImg2(response.data.imagens[1])
-      setImg3(response.data.imagens[2])
+      if(response.data.imagens[0]){
+        setImg1(response.data.imagens[0])
+      }
+      if(response.data.imagens[1]){
+        setImg2(response.data.imagens[1])
+      }
+      if(response.data.imagens[2]) {
+        setImg3(response.data.imagens[2])
+      }
 
       const data = format(parseISO(response.data.created_at), "'Dia' dd 'de' MMM", {locale: pt});
 
@@ -61,7 +67,6 @@ export default function Classificados(props) {
           <div className="col s12 l8 hide-on-small-only">
             <div className="slider card">
               <ul className="slides ">
-                {console.log(classificado.imagens)}
                 {img1 ? (
                   <>
                   <li>
@@ -85,7 +90,6 @@ export default function Classificados(props) {
           <div className="col s12 l8 hide-on-large-only">
             <div className="slider card">
               <ul className="slides ">
-                {console.log(classificado.imagens)}
                 {img1 ? (
                   <>
                   <li>

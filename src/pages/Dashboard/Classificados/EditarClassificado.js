@@ -112,15 +112,24 @@ export default function EditClassificado(props) {
                 </li>
               ))
             ): (
-              <>
-              <p className="red-text center">Você ainda não tem imagens no seu classificado</p>
-              <a href={`postClassificado/${id}/${user.id}`}>
-                <h2 className="center">Cadastrar Imagens</h2>
-              </a>
-              </>
+              null
             )}
 
           </List>
+
+        </div>
+
+        <div className="row">
+          <div classificado="row">
+            {imagens.length === 0 ? (
+              <>
+                <p className="red-text center">Você ainda pode adicionar imagens</p>
+                <a href={`postClassificado/${id}/${user.id}`}>
+                  <h2 className="center">Cadastrar Imagens</h2>
+                </a>
+              </>
+            ): null}
+          </div>
         </div>
 
       </Container>

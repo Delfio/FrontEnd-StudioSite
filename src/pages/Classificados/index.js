@@ -31,13 +31,15 @@ export default function Classificados() {
               el.aprovado? (
                 <a href={`classificado/${el.id}`}>
                 <li className="row">
-                  <div className="col s12">
-                    <section className="col l4 s5">
-                      <ImgAnuncio
-                        src={el.imagem ? el.imagem.url : null}
-                        alt={el.imagem ? el.imagem.type : null}
-                      />
-                    </section>
+                  <div style={{alignItems: 'center', display: 'flex'}} className="col s12">
+                    <div style={{maxWidth: '150px', maxHeight: '238px', display: 'inline-block', marginRight: '20px', alignItems: 'center', display: 'flex'}} className="col l4 s5">
+                      <section className="col l12 s12">
+                        <ImgAnuncio
+                          src={el.imagem ? el.imagem.url : null}
+                          alt={el.imagem ? el.imagem.type : null}
+                        />
+                      </section>
+                    </div>
                     <section className="col l5 hide-on-med-and-down">
                       <h2 className="truncate black-text">{el.titulo}</h2>
                       <label className="grey-text" htmlFor="h5">

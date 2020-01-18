@@ -46,11 +46,10 @@ export const Container = styled.ul`
 `;
 
 export const ImgAnuncio = styled.img`
-  max-width: 200px;
-  max-height: 150px;
-  height: auto;
+
+  height: 100%;
   width: 100%;
-  // max-height: 9rem;
+  /* // max-height: 9rem; */
   margin-top: 5px;
   padding: 0;
   border-radius: 5px;

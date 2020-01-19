@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import {toast} from 'react-toastify';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import api from '../../../../services/api';
 
@@ -88,7 +88,6 @@ export default function Files(props) {
     return { url: 'https://httpbin.org/post', body }
   }
 
-
   async function handleDelete(data){
     await api.delete(`empresas/imagem/${data}`)
 
@@ -99,6 +98,14 @@ export default function Files(props) {
     const {imagens} = conteudo;
     setImages(imagens);
     toast.success('Imagem deletada com sucesso');
+  }
+
+  async function deleteEmpresa(){
+    await api.delete(`/empresas/${id}`)
+
+    return (
+      this.props.history.pushState('/allEmpresas')
+    )
   }
 
   return (
@@ -186,6 +193,15 @@ export default function Files(props) {
         ): (
           <h2>Não autorizado</h2>
         )}
+        <br/>
+        <div className="row">
+          <div style={{display: 'flex', alignItems: 'center'}} className="col s12">
+            <button title="Deletar empresa" onClick={()=>deleteEmpresa()} className="btn-floating btn-samall waves-effect waves-light red">
+              <i className="material-icons">delete</i>
+            </button>
+            <h5 className="red-text" style={{marginLeft: 18, fontWeight: 'bold'}}>Deletar empresa</h5>
+          </div>
+        </div>
       </Container>
     </div>
   );

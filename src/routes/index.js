@@ -30,9 +30,12 @@ import PreviewClassificado from '../pages/Dashboard/Classificados/PreviewClassif
 import PostEmpresa from '../pages/Dashboard/Empresas';
 
 import FilesEmpresa from '../pages/Dashboard/Empresas/Files';
+
 import EditFile from '../pages/Dashboard/Empresas/EditarImagem';
 import EditarAtividade from '../pages/Dashboard/Empresas/EditarAtividade';
 import EditarVideo from '../pages/Dashboard/Empresas/EditarVideo';
+
+import AllEmpresas from '../pages/Dashboard/Empresas/TodasAsEmpresas';
 
 /* Empresas */
 
@@ -90,6 +93,8 @@ export default function Routes() {
       <Route path="/novaEmpresa/:id/editAtividade/:atividade_id" exact component={EditarAtividade} isPrivate />
 
       <Route path="/novaEmpresa/:id/editVideo/:video_id" exact component={EditarVideo} isPrivate />
+
+      <Route path="/allEmpresa" exact component={AllEmpresas} isPrivate />
 
 {/* Empresa Painel */}
 

@@ -3,6 +3,8 @@ import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import { useSelector } from 'react-redux';
 
+import {toast} from 'react-toastify';
+
 import { Link } from 'react-router-dom';
 
 import api from '../../../../services/api';
@@ -10,7 +12,6 @@ import api from '../../../../services/api';
 import { Container, Section, List } from './styles';
 
 import Form from './Form';
-import Table from './Table';
 
 export default function Files(props) {
   const { id } = props.match.params;
@@ -97,9 +98,8 @@ export default function Files(props) {
 
     const {imagens} = conteudo;
     setImages(imagens);
+    toast.success('Imagem deletada com sucesso');
   }
-
-
 
   return (
     <div className="container">

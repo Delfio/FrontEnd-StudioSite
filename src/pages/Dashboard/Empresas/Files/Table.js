@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {toast} from 'react-toastify';
 
 import api from '../../../../services/api';
 // import { Container } from './styles';
@@ -40,6 +41,7 @@ export default function Files({id, videos, atividades}) {
     const response = await api.get(`empresas/${id}`);
     const esmpresa = response.data.Empresas[0];
     setServicos(esmpresa.servicos)
+    toast.success('Serviço deletado com sucesso')
   }
 
   async function deleteVideo(data){
@@ -49,6 +51,7 @@ export default function Files({id, videos, atividades}) {
     const esmpresa = response.data.Empresas[0];
 
     setVideos(esmpresa.videos)
+    toast.success('Video deletado com sucesso')
   }
 
   return (

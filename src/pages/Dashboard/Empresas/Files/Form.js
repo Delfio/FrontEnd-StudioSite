@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import * as Yup from 'yup';
 import { Form, Input } from '@rocketseat/unform';
 
+import {toast} from 'react-toastify';
+
 import api from '../../../../services/api';
 
 import Table from './Table';
@@ -40,6 +42,7 @@ export default function Files({id}) {
     const empresa = response.data.Empresas[0]
 
     setAtividades(empresa.servicos)
+    toast.success('Atividade enviada com sucesso')
   }
 
   async function handleSubmitVideo(data){
@@ -49,6 +52,7 @@ export default function Files({id}) {
     const empresa = response.data.Empresas[0]
 
     setVideos(empresa.videos)
+    toast.success('Video enviado com sucesso')
   }
 
   return (

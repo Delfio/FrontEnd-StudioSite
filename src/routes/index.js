@@ -31,6 +31,7 @@ import PostEmpresa from '../pages/Dashboard/Empresas';
 
 import FilesEmpresa from '../pages/Dashboard/Empresas/Files';
 import EditFile from '../pages/Dashboard/Empresas/EditarImagem';
+import EditarAtividade from '../pages/Dashboard/Empresas/EditarAtividade';
 
 /* Empresas */
 
@@ -84,6 +85,8 @@ export default function Routes() {
       <Route path="/novaEmpresa" exact component={PostEmpresa} isPrivate />
       <Route path="/novaEmpresa/:id/files" exact component={FilesEmpresa} isPrivate />
       <Route path="/novaEmpresa/:id/editarImagem/Empresa/:imagem_id" exact component={EditFile} isPrivate />
+
+      <Route path="/novaEmpresa/:id/editAtividade/:atividade_id" exact component={EditarAtividade} isPrivate />
 
 {/* Empresa Painel */}
 

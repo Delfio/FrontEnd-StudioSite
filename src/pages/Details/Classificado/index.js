@@ -69,7 +69,6 @@ export default function DetailsClassificado(props) {
                   <Li bg={img1.url} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
                       className={`${imgs.length >= 1 ? null : 'hide'}`}>
                         <img style={{width: '100%', height: '100%', maxWidth: '600px', alignItems: 'center', display: 'flex', position: 'center'}} className="responsive-img materialboxed" src={img1.url} />
-
                   </Li>
                   <Li style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}} className={`${imgs.length >= 2 ? null : 'hide'}`}>
                     <img style={{width: '100%', height: '100%', maxWidth: '600px', alignItems: 'center', display: 'flex', position: 'center'}} className="responsive-img" src={img2.url} />

@@ -26,6 +26,14 @@ import PreviewClassificado from '../pages/Dashboard/Classificados/PreviewClassif
 
 /* Classificado */
 
+/* Empresas */
+import PostEmpresa from '../pages/Dashboard/Empresas';
+
+import FilesEmpresa from '../pages/Dashboard/Empresas/Files';
+import EditFile from '../pages/Dashboard/Empresas/EditarImagem';
+
+/* Empresas */
+
 /*Details */
 
 import DetailsClassificado from '../pages/Details/Classificado';
@@ -71,6 +79,13 @@ export default function Routes() {
 
       <Route path="/previewClassificado/:id" exact component={PreviewClassificado} isPrivate />
 {/*Classificado */}
+
+{/* Empresa Painel */}
+      <Route path="/novaEmpresa" exact component={PostEmpresa} isPrivate />
+      <Route path="/novaEmpresa/:id/files" exact component={FilesEmpresa} isPrivate />
+      <Route path="/novaEmpresa/:id/editarImagem/Empresa/:imagem_id" exact component={EditFile} isPrivate />
+
+{/* Empresa Painel */}
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

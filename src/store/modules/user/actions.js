@@ -17,3 +17,10 @@ export function cadastroClassificadoFailure(){
     type: '@user/CADASTRO_CLASSIFICADO_FAILURE',
   }
 }
+
+export function cadastroEmpresaRequest(data) {
+  return {
+    type: '@user/CADASTRO_EMPRESA_REQUEST',
+    payload: { data }
+  }
+}

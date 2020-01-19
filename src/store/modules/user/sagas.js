@@ -31,7 +31,41 @@ export function* cadastroClassificado({ payload }) {
 
 }
 
+export function* cadastroEmpresa({payload}){
+  try{
+    const {
+      nome,
+      descricao,
+      fone_contato,
+      fone_contato2,
+      email_contato,
+      endereco,
+      destaque,
+    } = payload.data;
+
+    const response = yield call(api.post, '/empresas', {
+      nome,
+      descricao,
+      fone_contato,
+      fone_contato2,
+      email_contato,
+      endereco,
+      destaque,
+    })
+
+    const { id } = response.data
+
+    console.log(response.data);
+
+    yield history.push(`/novaEmpresa/${id}/files`)
+
+  } catch (err) {
+
+  }
+}
+
 export default all([
 
-  takeLatest('@user/CADASTRO_CLASSIFICADO_REQUEST', cadastroClassificado)
+  takeLatest('@user/CADASTRO_CLASSIFICADO_REQUEST', cadastroClassificado),
+  takeLatest('@user/CADASTRO_EMPRESA_REQUEST', cadastroEmpresa)
 ]);

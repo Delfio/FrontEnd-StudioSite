@@ -68,7 +68,8 @@ export default function AllEmpresas() {
                 <th>Fone 2</th>
                 <th>Email</th>
                 <th>Destaque</th>
-                <th>Dados</th>
+                <th>Arquivos</th>
+                <th>Editar</th>
             </tr>
           </thead>
 
@@ -92,6 +93,11 @@ export default function AllEmpresas() {
                 <td>
                   <a href={`/novaEmpresa/${el.id}/files`}>
                     Detalhes
+                  </a>
+                </td>
+                <td>
+                  <a href={`/editarEmpresa/${el.id}`}>
+                    editar
                   </a>
                 </td>
               </tr>

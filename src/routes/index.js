@@ -38,6 +38,8 @@ import EditarVideo from '../pages/Dashboard/Empresas/EditarVideo';
 
 import AllEmpresas from '../pages/Dashboard/Empresas/TodasAsEmpresas';
 
+import EditarEmpresas from '../pages/Dashboard/Empresas/EditarEmpresa';
+
 /* Empresas */
 
 /* Noticias */
@@ -111,6 +113,9 @@ export default function Routes() {
       <Route path="/novaEmpresa/:id/editVideo/:video_id" exact component={EditarVideo} isPrivate />
 
       <Route path="/allEmpresa" exact component={AllEmpresas} isPrivate />
+
+      <Route path="/editarEmpresa/:id" exact component={EditarEmpresas} isPrivate />
+
 {/* Empresa Painel */}
 
 {/* Noticia Painel */}

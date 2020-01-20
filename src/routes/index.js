@@ -27,6 +27,7 @@ import PreviewClassificado from '../pages/Dashboard/Classificados/PreviewClassif
 /* Classificado */
 
 /* Empresas */
+
 import PostEmpresa from '../pages/Dashboard/Empresas';
 
 import FilesEmpresa from '../pages/Dashboard/Empresas/Files';
@@ -38,6 +39,21 @@ import EditarVideo from '../pages/Dashboard/Empresas/EditarVideo';
 import AllEmpresas from '../pages/Dashboard/Empresas/TodasAsEmpresas';
 
 /* Empresas */
+
+/* Noticias */
+
+import PostNoticia from '../pages/Dashboard/Noticias';
+import FileNoticia from '../pages/Dashboard/Noticias/Files';
+
+import EditarNoticia from '../pages/Dashboard/Noticias/EditarNoticia';
+
+import EditarImagemNoticia from '../pages/Dashboard/Noticias/EditarImage';
+import AllNews from '../pages/Dashboard/Noticias/TodasAsNoticias';
+
+import NoticiasListadas from '../pages/Dashboard/Noticias/NoticiasListadas';
+
+
+/* Noticias */
 
 /*Details */
 
@@ -95,8 +111,24 @@ export default function Routes() {
       <Route path="/novaEmpresa/:id/editVideo/:video_id" exact component={EditarVideo} isPrivate />
 
       <Route path="/allEmpresa" exact component={AllEmpresas} isPrivate />
-
 {/* Empresa Painel */}
+
+{/* Noticia Painel */}
+
+      <Route path="/novaNews" exact component={PostNoticia} isPrivate />
+
+      <Route path="/novaNews/:id/files" exact component={FileNoticia} isPrivate />
+      <Route path="/novaNews/:id/editarImagem/News/:imagem_id" exact component={EditarImagemNoticia} isPrivate />
+
+      <Route path="/allNews" exact component={AllNews} isPrivate />
+
+      <Route path="/newsList" exact component={NoticiasListadas} isPrivate />
+
+
+      <Route path="/editarNews/:id" exact component={EditarNoticia} isPrivate />
+
+
+{/* Noticia Painel */}
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

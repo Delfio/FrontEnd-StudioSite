@@ -24,3 +24,10 @@ export function cadastroEmpresaRequest(data) {
     payload: { data }
   }
 }
+
+export function cadastroNoticiaRequest(data) {
+  return {
+    type: '@user/CADASTRO_NOTICIA_REQUEST',
+    payload: { data }
+  }
+}

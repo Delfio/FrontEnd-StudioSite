@@ -20,6 +20,7 @@ const schemaVideo = Yup.object().shape({
     .required('Insira um titulo para o video'),
   descricaoVideo: Yup.string(),
   link: Yup.string()
+    .url('Insira um link correto')
     .required('Insira um link para o video')
 })
 

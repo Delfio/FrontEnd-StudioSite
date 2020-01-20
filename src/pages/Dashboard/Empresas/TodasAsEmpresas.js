@@ -5,7 +5,7 @@ import api from '../../../services/api';
 
 import { Container } from './styles';
 
-export default function Empresas() {
+export default function AllEmpresas() {
   const [autorizado, setAutorizacao] = useState(false)
   const [empresas, setEmpresas] = useState([])
 

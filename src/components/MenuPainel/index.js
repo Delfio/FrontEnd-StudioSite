@@ -145,6 +145,12 @@ export default function MenuPainel() {
         </Link>
       </li>
       <li>
+        <Link to ="/newsList">
+          <i className="material-icons blue-text">view_list</i>
+          <p>Noticias Principais</p>
+        </Link>
+      </li>
+      <li>
         <Link to ="/allNews">
           <i className="material-icons blue-text">autorenew</i>
           <p>Todos as Notícias</p>

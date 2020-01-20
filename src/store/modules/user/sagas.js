@@ -55,11 +55,36 @@ export function* cadastroEmpresa({payload}){
 
     const { id } = response.data
 
-    console.log(response.data);
-
     yield history.push(`/novaEmpresa/${id}/files`)
 
   } catch (err) {
+    toast.error('Erro, Não foi possivel cadastrar a empresa')
+
+  }
+}
+
+export function* cadastroNoticia({payload}){
+  try{
+    const {
+      titulo,
+      brev_descricao,
+      descricao,
+      tipo
+    } = payload.data;
+
+    const response = yield call(api.post, '/noticias', {
+      titulo,
+      brev_descricao,
+      descricao,
+      tipo
+    })
+
+    const { id } = response.data
+
+    yield history.push(`/novaNews/${id}/files`)
+
+  }catch(err){
+    toast.error('Erro, Não foi possivel cadastrar a notícia')
 
   }
 }
@@ -67,5 +92,6 @@ export function* cadastroEmpresa({payload}){
 export default all([
 
   takeLatest('@user/CADASTRO_CLASSIFICADO_REQUEST', cadastroClassificado),
-  takeLatest('@user/CADASTRO_EMPRESA_REQUEST', cadastroEmpresa)
+  takeLatest('@user/CADASTRO_EMPRESA_REQUEST', cadastroEmpresa),
+  takeLatest('@user/CADASTRO_NOTICIA_REQUEST', cadastroNoticia),
 ]);

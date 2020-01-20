@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import {toast} from 'react-toastify';
 
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import api from '../../../../services/api';
 
@@ -104,7 +104,7 @@ export default function Files(props) {
     await api.delete(`/empresas/${id}`)
 
     return (
-      this.props.history.pushState('/allEmpresas')
+      props.history.push('/allEmpresa')
     )
   }
 

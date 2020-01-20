@@ -43,7 +43,15 @@ export default function Empresas() {
   const [destaque, setDestaque] = useState(false);
 
   async function handleSubmit(data) {
-    await dispatch(cadastroEmpresaRequest(data))
+    await dispatch(cadastroEmpresaRequest({
+      nome: data.nome,
+      descricao: data.descricao,
+      fone_contato: data.fone_contato,
+      fone_contato2: data.fone_contato2,
+      email_contato: data.email_contato,
+      endereco: data.endereco,
+      destaque: destaque,
+    }))
   }
 
 

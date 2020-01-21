@@ -9,16 +9,17 @@ import { Link } from 'react-router-dom';
 
 import api from '../../../../services/api';
 
+import Form from './Form';
+
 import { Container, Section, List } from './styles';
 
 export default function Files(props) {
   const { id } = props.match.params;
 
   const user = useSelector(state => state.user.profile);
-  const [autorizado, setAutorizado] = useState(false)
-  const [noticia, setNoticia] = useState({})
-
-  const [images, setImages] = useState([])
+  const [autorizado, setAutorizado] = useState(false);
+  const [images, setImages] = useState([]);
+  const [video, setVideo] = useState([]);
 
   useEffect(() => {
     if(user.ADM){
@@ -27,14 +28,16 @@ export default function Files(props) {
       setAutorizado(false)
     }
     async function loadNoticia() {
-      const response = await api.get(`noticias/${id}`)
+      const response = await api.get(`eventos/${id}`)
       // setNoticia(response.data);
 
-      const { imagens } = response.data;
+      const { imagens, videos } = response.data;
       setImages(imagens);
+      setVideo(videos);
     }
     loadNoticia();
-  }, [])
+  }, []);
+
 
   const getUploadParams = async ({ file, meta }) => {
     const body = new FormData()
@@ -42,10 +45,10 @@ export default function Files(props) {
 
     const data = new FormData()
 
-    data.append('imagem_noticia', file);
+    data.append('imagem_evento', file);
 
-    await api.post(`noticias/${id}/imagem`, data);
-    const response = await api.get(`noticias/${id}`)
+    await api.post(`eventos/${id}/imagem`, data);
+    const response = await api.get(`eventos/${id}`)
 
     const { imagens } = response.data;
     setImages(imagens);
@@ -56,24 +59,23 @@ export default function Files(props) {
   }
 
   async function handleDelete(data){
-    await api.delete(`/noticias/${id}/imagem/${data}`)
+    await api.delete(`/eventos/${id}/imagem/${data}`)
 
-    const response = await api.get(`noticias/${id}`)
+    const response = await api.get(`eventos/${id}`)
 
     const { imagens } = response.data;
     setImages(imagens);
     toast.success('Imagem deletada com sucesso')
   }
 
-  async function deleteNews(){
-    await api.delete(`/noticias/${id}`)
+  async function deleteEvento(){
+    await api.delete(`/eventos/${id}`)
 
-    toast.success('Noticia deletada')
+    toast.success('Evento deletado com sucesso')
     return (
-      props.history.push('/allNews')
+      props.history.push('/allEventos')
     )
   }
-
 
   return (
     <div className="container">
@@ -81,7 +83,7 @@ export default function Files(props) {
         <Container className="col s12">
           <h1 className="red-text">Adicionar arquivos</h1>
           <hr/>
-          <h6>. Insira os arquivos relacionados a noticia</h6>
+          <h6>. Insira os arquivos relacionados ao evento</h6>
           <h6>. A imagem principal será sempre a última inserida</h6>
           <h6>. As quantidades de imagem vai de acordo com o cadastrante</h6>
           <h6>. De preferência pra imagens quadradas '1000x1000'</h6>
@@ -111,7 +113,7 @@ export default function Files(props) {
                       <i className="material-icons small red-text">delete</i>
                     </button>
                     <button className="left" title="Editar Imagem">
-                      <Link to={`editarImagem/News/${el.id}`}>
+                      <Link to={`editarImagem/Evento/${el.id}`}>
                         <i className="material-icons small green-text">edit</i>
                       </Link>
                     </button>
@@ -122,12 +124,18 @@ export default function Files(props) {
             ): null}
           </div>
           <br/>
+
+          <div className="row">
+            <Form id={id} />
+          </div>
+
+          <br/>
           <div className="row">
             <div style={{display: 'flex', alignItems: 'center'}} className="col s12">
-              <button title="Deletar empresa" onClick={()=>deleteNews()} className="btn-floating btn-samall waves-effect waves-light red">
+              <button title="Deletar empresa" onClick={()=>deleteEvento()} className="btn-floating btn-samall waves-effect waves-light red">
                 <i className="material-icons">delete</i>
               </button>
-              <h5 className="red-text" style={{marginLeft: 18, fontWeight: 'bold'}}>Deletar Noticia</h5>
+              <h5 className="red-text" style={{marginLeft: 18, fontWeight: 'bold'}}>Deletar Evento</h5>
             </div>
           </div>
         </Container>

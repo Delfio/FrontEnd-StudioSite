@@ -27,7 +27,6 @@ import PreviewClassificado from '../pages/Dashboard/Classificados/PreviewClassif
 /* Classificado */
 
 /* Empresas */
-
 import PostEmpresa from '../pages/Dashboard/Empresas';
 
 import FilesEmpresa from '../pages/Dashboard/Empresas/Files';
@@ -39,11 +38,9 @@ import EditarVideo from '../pages/Dashboard/Empresas/EditarVideo';
 import AllEmpresas from '../pages/Dashboard/Empresas/TodasAsEmpresas';
 
 import EditarEmpresas from '../pages/Dashboard/Empresas/EditarEmpresa';
-
 /* Empresas */
 
 /* Noticias */
-
 import PostNoticia from '../pages/Dashboard/Noticias';
 import FileNoticia from '../pages/Dashboard/Noticias/Files';
 
@@ -53,9 +50,19 @@ import EditarImagemNoticia from '../pages/Dashboard/Noticias/EditarImage';
 import AllNews from '../pages/Dashboard/Noticias/TodasAsNoticias';
 
 import NoticiasListadas from '../pages/Dashboard/Noticias/NoticiasListadas';
-
-
 /* Noticias */
+
+/* Eventos */
+import PostEventos from '../pages/Dashboard/Eventos';
+import FileEvento from '../pages/Dashboard/Eventos/Files';
+
+import EditarImagemEvento from '../pages/Dashboard/Eventos/EditarImagem';
+import EditarVideoEvento from '../pages/Dashboard/Eventos/EditarVideo';
+import EditarEvento from '../pages/Dashboard/Eventos/EditarEvento';
+
+import TodosOsEventos from '../pages/Dashboard/Eventos/AllEventos';
+
+/* Eventos */
 
 /*Details */
 
@@ -119,21 +126,29 @@ export default function Routes() {
 {/* Empresa Painel */}
 
 {/* Noticia Painel */}
-
       <Route path="/novaNews" exact component={PostNoticia} isPrivate />
-
       <Route path="/novaNews/:id/files" exact component={FileNoticia} isPrivate />
       <Route path="/novaNews/:id/editarImagem/News/:imagem_id" exact component={EditarImagemNoticia} isPrivate />
-
       <Route path="/allNews" exact component={AllNews} isPrivate />
-
       <Route path="/newsList" exact component={NoticiasListadas} isPrivate />
-
-
       <Route path="/editarNews/:id" exact component={EditarNoticia} isPrivate />
 
-
 {/* Noticia Painel */}
+
+{/* Eventos */}
+      <Route path="/novoEvento" exact component={PostEventos} isPrivate />
+
+      <Route path="/novoEvento/:id/files" exact component={FileEvento} isPrivate />
+      <Route path="/novoEvento/:id/editarImagem/Evento/:imagem_id" exact component={EditarImagemEvento} isPrivate />
+
+      <Route path="/novoEvento/:id/editVideo/:video_id" exact component={EditarVideoEvento} isPrivate />
+
+      <Route path="/editarEvento/:id" exact component={EditarEvento} isPrivate />
+
+      <Route path="/allEventos" exact component={TodosOsEventos} isPrivate />
+
+{/* Eventos */}
+
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

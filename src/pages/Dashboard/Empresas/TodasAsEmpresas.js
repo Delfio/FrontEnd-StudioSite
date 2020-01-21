@@ -25,7 +25,7 @@ export default function AllEmpresas() {
       setEmpresas(response.data);
     }
     loadEmpresas();
-  }, [autorizado])
+  }, [])
 
   async function handleRemoveDestaque(data){
     const response = await api.put(`empresas/${data}`, {

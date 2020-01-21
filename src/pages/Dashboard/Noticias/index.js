@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {cadastroNoticiaRequest} from '../../../store/modules/user/actions'
 
-
 import { Container } from './styles';
 
 const schema = Yup.object().shape({

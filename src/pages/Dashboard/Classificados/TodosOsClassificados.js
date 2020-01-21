@@ -46,6 +46,12 @@ export default function AllClassificados() {
     }
   }
 
+  async function handleDelete(data){
+    await api.delete(`classificados/${data}`)
+    const response = await api.get(`/admin/classificados`);
+    setClassificados(response.data);
+  }
+
   // /admin/classificados
   return (
     <div className="container">
@@ -66,6 +72,7 @@ export default function AllClassificados() {
                 <th>Imagens</th>
                 <th>Status</th>
                 <th>Ação</th>
+                <th>Deletar</th>
             </tr>
           </thead>
 
@@ -89,6 +96,11 @@ export default function AllClassificados() {
                   <a href={`/previewClassificado/${el.id}`}>
                     Detalhes
                   </a>
+                </td>
+                <td>
+                  <button title="Deletar Classificado" onClick={()=>handleDelete(el.id)} className="btn-floating btn-samall waves-effect waves-light white">
+                    <i className="material-icons red-text">delete</i>
+                  </button>
                 </td>
               </tr>
             ))}

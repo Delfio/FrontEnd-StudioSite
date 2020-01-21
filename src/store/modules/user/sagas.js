@@ -89,9 +89,46 @@ export function* cadastroNoticia({payload}){
   }
 }
 
+export function* cadastroEvento({payload}){
+  try{
+
+    const {
+      titulo,
+      descricao,
+      phone_contato,
+      email_contato,
+      responsavel,
+      data_evento,
+    } = payload.data;
+
+    const response = yield call(api.post, '/eventos', {
+      titulo,
+      descricao,
+      phone_contato,
+      email_contato,
+      responsavel,
+      data_evento,
+    });
+
+    const { id } = response.data;
+
+    console.log(response.data)
+
+    toast.success('Evento cadastrado com sucesso!')
+
+    if(id){
+      yield history.push(`/novoEvento/${id}/files`)
+    }
+
+  }catch(err){
+    toast.error('Não foi possivel cadastrar, verifique os dados')
+  }
+}
+
 export default all([
 
   takeLatest('@user/CADASTRO_CLASSIFICADO_REQUEST', cadastroClassificado),
   takeLatest('@user/CADASTRO_EMPRESA_REQUEST', cadastroEmpresa),
   takeLatest('@user/CADASTRO_NOTICIA_REQUEST', cadastroNoticia),
+  takeLatest('@user/CADASTRO_EVENTO_REQUEST', cadastroEvento),
 ]);

@@ -24,7 +24,6 @@ export default function Files({id, videos, atividades}) {
 //Atualizar em tempo real as atividades
   useEffect(() => {
     async function loadAtividades(){
-      console.log('ta aquii')
       const response = await api.get(`empresas/${id}`);
       const esmpresa = response.data.Empresas[0]
       setServicos(esmpresa.servicos)

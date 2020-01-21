@@ -54,7 +54,7 @@ export default function EditarEmpresa(props) {
   return (
     <div className="container">
       <Container className="col s12">
-        <h1 className="red-text">Editar a Empresa</h1>
+        <h1 className="red-text">Editar Conteudo da Empresa</h1>
         <hr/>
         <br/>
         <Form onSubmit={handleUpdate} initialData={empresa} schema={schema}>

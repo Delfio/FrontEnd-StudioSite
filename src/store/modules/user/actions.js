@@ -31,3 +31,10 @@ export function cadastroNoticiaRequest(data) {
     payload: { data }
   }
 }
+
+export function cadatroEventoRequest(data){
+  return {
+    type: '@user/CADASTRO_EVENTO_REQUEST',
+    payload: { data }
+  }
+}

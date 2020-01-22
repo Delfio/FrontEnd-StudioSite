@@ -125,10 +125,42 @@ export function* cadastroEvento({payload}){
   }
 }
 
+export function* cadastroEmpresaDestaque({payload}){
+  try{
+    const {
+      nome,
+      descricao,
+      fone_contato,
+      fone_contato2,
+      email_contato,
+      endereco
+    } = payload.data;
+
+    const response = yield call(api.post, '/empresaDestaque', {
+      nome,
+      descricao,
+      fone_contato,
+      fone_contato2,
+      email_contato,
+      endereco,
+    })
+
+    const { id } = response.data
+
+    yield history.push(`/novaEmpresaDestaque/${id}/files`)
+    toast.success('Empresa Cadastrada com sucesso!')
+
+  } catch (err) {
+    toast.error('Erro, Não foi possivel cadastrar a empresa')
+
+  }
+}
+
 export default all([
 
   takeLatest('@user/CADASTRO_CLASSIFICADO_REQUEST', cadastroClassificado),
   takeLatest('@user/CADASTRO_EMPRESA_REQUEST', cadastroEmpresa),
   takeLatest('@user/CADASTRO_NOTICIA_REQUEST', cadastroNoticia),
   takeLatest('@user/CADASTRO_EVENTO_REQUEST', cadastroEvento),
+  takeLatest('@user/CADASTRO_EMPRESA_DESTAQUE_REQUEST', cadastroEmpresaDestaque),
 ]);

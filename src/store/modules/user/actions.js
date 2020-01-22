@@ -38,3 +38,10 @@ export function cadatroEventoRequest(data){
     payload: { data }
   }
 }
+
+export function cadastroEmpresaDestaqueRequest(data) {
+  return {
+    type: '@user/CADASTRO_EMPRESA_DESTAQUE_REQUEST',
+    payload: { data }
+  }
+}

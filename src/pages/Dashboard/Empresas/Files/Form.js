@@ -24,7 +24,7 @@ const schemaVideo = Yup.object().shape({
     .required('Insira um link para o video')
 })
 
-export default function Files({id}) {
+export default function Forms({id}) {
 
   const [atividades, setAtividades] = useState([])
   const [videos, setVideos] = useState([])

@@ -4,7 +4,7 @@ import {toast} from 'react-toastify';
 import api from '../../../../services/api';
 // import { Container } from './styles';
 
-export default function Files({id, videos, atividades}) {
+export default function Tables({id, videos, atividades}) {
 
 
   const [servico, setServicos] = useState([]);

@@ -40,6 +40,23 @@ import AllEmpresas from '../pages/Dashboard/Empresas/TodasAsEmpresas';
 import EditarEmpresas from '../pages/Dashboard/Empresas/EditarEmpresa';
 /* Empresas */
 
+
+/* Empresa Destaque */
+
+import PostEmpresaDestaque from '../pages/Dashboard/EmpresaDestaque';
+
+import FileEmpresaDestaque from '../pages/Dashboard/EmpresaDestaque/Files';
+
+import EditarImagemEmpresaDestaque from '../pages/Dashboard/EmpresaDestaque/EditarImage';
+import EditarVideoEmpresaDestaque from '../pages/Dashboard/EmpresaDestaque/EditarVideo';
+import EditarEmpresaEmDestaque from '../pages/Dashboard/EmpresaDestaque/EditarEmpresaDestaque';
+
+import AllEmpresasDestaque from '../pages/Dashboard/EmpresaDestaque/AllEmpresasDestaque';
+
+
+/* Empresa Destaque */
+
+
 /* Noticias */
 import PostNoticia from '../pages/Dashboard/Noticias';
 import FileNoticia from '../pages/Dashboard/Noticias/Files';
@@ -124,6 +141,21 @@ export default function Routes() {
       <Route path="/editarEmpresa/:id" exact component={EditarEmpresas} isPrivate />
 
 {/* Empresa Painel */}
+
+
+{/* Empresa Destaque */}
+      <Route path="/novaEmpresaDestaque" exact component={PostEmpresaDestaque} isPrivate />
+      <Route path="/novaEmpresaDestaque/:id/files" exact component={FileEmpresaDestaque} isPrivate />
+
+      <Route path="/novaEmpresaDestaque/:id/editarImagem/EmpresaDestaque/:imagem_id" exact component={EditarImagemEmpresaDestaque} isPrivate />
+      <Route path="/novaEmpresaDestaque/:id/editVideo/:video_id" exact component={EditarVideoEmpresaDestaque} isPrivate />
+
+      <Route path="/allEmpresaDestaque" exact component={AllEmpresasDestaque} isPrivate />
+
+      <Route path="/editarEmpresaDestaque/:id" exact component={EditarEmpresaEmDestaque} isPrivate />
+
+{/* Empresa Destaque */}
+
 
 {/* Noticia Painel */}
       <Route path="/novaNews" exact component={PostNoticia} isPrivate />

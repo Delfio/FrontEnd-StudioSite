@@ -8,58 +8,63 @@ import api from '../../../../services/api';
 
 import Table from './Table';
 
+
 const schema = Yup.object().shape({
-  link: Yup.string()
-    .url('Insira um link válido')
-    .required('Insira um nome da atividade'),
   titulo: Yup.string()
-    .required('Insira uma descrição da atividade'),
+    .required('Insira um titulo para o video'),
   descricao: Yup.string(),
+  link: Yup.string()
+    .url('Insira um link correto')
+    .required('Insira um link para o video')
 })
 
-
-export default function FormEvento({ id }) {
+export default function Forms({id}) {
 
   const [videos, setVideos] = useState([])
 
   async function handleSubmitVideo(data){
-    await api.post(`eventos/${id}/video`, data)
+    await api.post(`empresaDestaque/${id}/video`, data)
 
-    const response = await api.get(`eventos/${id}`);
+    const response = await api.get(`empresaDestaque/${id}`);
+
     setVideos(response.data.videos)
     toast.success('Video enviado com sucesso')
   }
+
   return (
     <>
-    <div className="col s12">
-      <hr/>
-      <h4> Cadastrar videos </h4>
+    <div className="row">
+
+      <h4 className="center">Videos relacionados a empresa</h4>
       <Form schema={schema} onSubmit={handleSubmitVideo}>
         <div className="col s12 hide-on-small-only">
           <h5 className="grey-text">Preencha os campos abaixo</h5>
         </div>
         <div className="input-field col l12 s12">
           <Input name="titulo" id="titulo" type="text" className="validate" />
-          <label htmlFor="titulo">Titulo *</label>
+          <label htmlFor="titulo">Titulo do Video *</label>
         </div>
         <div className="input-field col l12 s12">
           <Input name="descricao" id="descricao" type="text" className="materialize-textarea" />
-          <label htmlFor="descricao">Descrição do video *</label>
+          <label htmlFor="descricao">Descrição do video</label>
         </div>
         <div className="input-field col l12 s12">
           <Input name="link" id="link" type="text" className="materialize-textarea" />
-          <label htmlFor="link">Link *</label>
+          <label htmlFor="link">Links de videos *</label>
         </div>
-        <p className="red-text">! Video de icorporação = 'https://www.youtube.com/embed/66PrK9b_WD8?list=RDcRLSKh5ridA'</p>
-
+        <div className="col s12">
+          <p className="red-text"> ! Videos de incorporação do youtube = "https://www.youtube.com/embed/vFmGpD7DodI?list=RDMMTUDjbeCtBKI"</p>
+        </div>
         <div style={{marginTop: 15}} className="col s12">
           <button className="btn waves-effect waves-light" type="submit" name="action">Confirmar
             <i className="material-icons right">send</i>
           </button>
         </div>
       </Form>
+
     </div>
-    <Table id={id} videos={videos} />
+
+    <Table id={id} videos={videos}/>
     </>
   );
 }

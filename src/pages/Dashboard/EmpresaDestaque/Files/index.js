@@ -18,13 +18,11 @@ export default function Files(props) {
 
   const user = useSelector(state => state.user.profile);
   const [autorizado, setAutorizado] = useState(false)
+
   const [empresa, setEmpresa] = useState({})
 
   const [images, setImages] = useState([])
   const [videos, setVideos] = useState([])
-  const [servicos, setServicos] = useState([])
-
-  const [logoEmpresa, setLogo] = useState({});
 
   useEffect(() => {
     if(user.ADM){
@@ -34,10 +32,9 @@ export default function Files(props) {
     }
 
     async function loadEmpresa() {
-      const response = await api.get(`empresas/${id}`)
+      const response = await api.get(`empresaDestaque/${id}`)
 
-      const conteudo = response.data.Empresas[0];
-
+      const conteudo = response.data;
       setEmpresa(conteudo);
 
       const {imagens} = conteudo;
@@ -46,11 +43,6 @@ export default function Files(props) {
       const {videos} = conteudo;
       setVideos(videos);
 
-      const {servicos} = conteudo;
-      setServicos(servicos);
-
-      const { logo } = conteudo;
-      setLogo(logo);
     }
     loadEmpresa();
   }, [])
@@ -61,39 +53,22 @@ export default function Files(props) {
 
     const data = new FormData()
 
-    data.append('logo_empresa', file);
+    data.append('imagem_empresa_destaque', file);
+    await api.post(`empresaDestaque/${id}/imagem`, data);
 
-    // const response = await api.put(`empresas/${id}/logo/${logoEmpresa.id}`, data);
-    // await setLogo(response.data);
+    const response = await api.get(`empresaDestaque/${id}`)
 
-    const response = await api.post(`empresas/${id}/logo`, data);
-    await setLogo(response.data);
-
-    return { url: 'https://httpbin.org/post', body }
-  }
-
-  const getUploadParamsImage = async ({ file, meta }) => {
-    const body = new FormData()
-    body.append('fileField', file)
-
-    const data = new FormData()
-
-    data.append('imagem_empresa', file);
-    const response = await api.post(`empresas/${id}/imagem`, data);
-
-    const [jaexiste] = images;
-    setImages(jaexiste,
-      response.data);
+    setImages(response.data.imagens);
 
     return { url: 'https://httpbin.org/post', body }
   }
 
   async function handleDelete(data){
-    await api.delete(`empresas/imagem/${data}`)
+    await api.delete(`empresaDestaque/imagem/${data}`)
 
-    const response = await api.get(`empresas/${id}`)
+    const response = await api.get(`empresaDestaque/${id}`)
 
-    const conteudo = response.data.Empresas[0];
+    const conteudo = response.data;
 
     const {imagens} = conteudo;
     setImages(imagens);
@@ -101,7 +76,7 @@ export default function Files(props) {
   }
 
   async function deleteEmpresa(){
-    await api.delete(`/empresas/${id}`)
+    await api.delete(`/empresaDestaque/${id}`)
 
     return (
       props.history.push('/allEmpresa')
@@ -117,13 +92,12 @@ export default function Files(props) {
           <hr/>
           <h6>{`1. Insira as informações relacionadas a empresa ${empresa.nome}`}</h6>
           <h6>2. Insira imagens relacionadas a empresa</h6>
-          <h6>3. Insira a logo da empresa</h6>
           <h6>4. De preferência para o mesmo padrão de imagens</h6>
-          <h6>5. As logos devem ser em png sem fundo e quadradas '1000x1000'</h6>
+          <h6>5. As Imagens devem ser quadradas '1000x1000'</h6>
           <h6>6. As imagens não devem passar de 5MB</h6>
           <h6>7. A quantidade de imagens vai da preferência do cadastrante</h6>
           <br/>
-          <h4>Logo da empresa</h4>
+          <h4>Imagens da empresa</h4>
 
           <Dropzone
             // disabled={!logo}
@@ -133,39 +107,11 @@ export default function Files(props) {
             submitButtonContent="Enviar"
             accept="image/*"
             maxSizeBytes={2024*2024}
-            maxFiles={1}
-          />
-          <div className="row">
-            {empresa.logo? (
-              <>
-              <h5 className="grey-text">A logo atual: </h5>
-              <section style={{display: 'flex', alignItems: 'flex', justifyContent: 'center'}} className="col s12">
-                <img style={{width: '100%', height: '100%', maxWidth: 250}} src={logoEmpresa.url} alt="ImgLogo"/>
-              </section>
-              </>
-            ): null}
-          </div>
-          <div className="col s12">
-            <hr/>
-          </div>
-          <br/>
-          <h4>Adionar imagens relacionada a empresa</h4>
-          <Dropzone
-            // disabled={!logo}
-            getUploadParams={getUploadParamsImage}
-            // preview="Adicionar imagem"
-            inputContent="Selecione ou arraste as Imagens relacionadas"
-            submitButtonContent="Enviar"
-            accept="image/*"
-            maxSizeBytes={2024*2024}
             // maxFiles={1}
           />
-
           <br/>
-
           <div className="row">
-            {images.length > 0 ? (
-              <List className="container">
+            <List className="container">
                 {images.map(el => (
                   <li className="col l4 s6" key={el.id}>
                     <Section className="col s12" bg={el.url}/>
@@ -174,7 +120,7 @@ export default function Files(props) {
                       <i className="material-icons small red-text">delete</i>
                     </button>
                     <button className="left" title="Editar Imagem">
-                      <Link to={`editarImagem/Empresa/${el.id}`}>
+                      <Link to={`editarImagem/EmpresaDestaque/${el.id}`}>
                         <i className="material-icons small green-text">edit</i>
                       </Link>
                     </button>
@@ -182,13 +128,9 @@ export default function Files(props) {
                   </li>
                 ))}
               </List>
-            ): null}
           </div>
-          {/* Form */}
-          <div className="col s12">
-            <hr/>
-          </div>
-          <Form servicos={servicos} videos={videos} id={id}/>
+
+          <Form videos={videos} id={id}/>
           <br/>
           <div className="row">
             <div style={{display: 'flex', alignItems: 'center'}} className="col s12">
@@ -199,7 +141,6 @@ export default function Files(props) {
             </div>
           </div>
           </>
-
         ): (
           <h2>Não autorizado</h2>
         )}

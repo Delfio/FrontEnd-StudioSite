@@ -50,7 +50,7 @@ export default function EditarImagemEvento(props) {
         <br/>
 
         <div className="row">
-          <div class="col s12">
+          <div className="col s12">
             <img src={imagem.url} alt={imagem.name} className="responsive-img" />
           </div>
         </div>

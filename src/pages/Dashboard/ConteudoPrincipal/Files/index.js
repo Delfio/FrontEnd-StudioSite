@@ -35,6 +35,8 @@ export default function Files(props) {
         const response  = await api.get(`principal/${id}`)
         setTipo(response.data.tipo)
 
+        console.log(response)
+
         if(response.data.tipo == 1){
           setVideo(response.data.videos)
 

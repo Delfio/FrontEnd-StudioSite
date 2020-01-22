@@ -87,6 +87,9 @@ import TodosOsEventos from '../pages/Dashboard/Eventos/AllEventos';
 import PostConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal';
 import FilesConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal/Files';
 
+import EditarImagemConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal/EditarImagem';
+import AllConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal/AllConteudo';
+
 /* Conteudo Principal */
 
 /*Details */
@@ -193,6 +196,11 @@ export default function Routes() {
 {/* Conteudo principal */}
       <Route path="/conteudoPrincipal" exact component={PostConteudoPrincipal} isPrivate />
       <Route path="/newPrincipal/:id/files" exact component={FilesConteudoPrincipal} isPrivate />
+      <Route path="/newPrincipal/:id/editarImagem/Evento/:imagem_id" exact component={EditarImagemConteudoPrincipal} isPrivate />
+
+      <Route path="/allConteudoPrincipal" exact component={AllConteudoPrincipal} isPrivate />
+
+{/* Conteudo principal */}
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

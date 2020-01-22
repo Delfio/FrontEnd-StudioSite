@@ -80,7 +80,7 @@ export default function TodosOsEventos() {
                   <button
                     className="center btn-floating btn-small waves-effect waves-light red"
                     title="Deletar Evento" onClick={()=> handleDelete(el.id)}>
-                    <i class="material-icons">add</i>
+                    <i className="material-icons">add</i>
                   </button>
                 </td>
               </tr>

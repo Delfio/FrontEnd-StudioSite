@@ -72,7 +72,7 @@ export default function ConteudoPrincipal() {
             </div>
             <div className="input-field col l12 s12">
               <Input name="empresa" id="empresa" type="text" className="validate" />
-              <label htmlFor="empresa">Breve descrição *</label>
+              <label htmlFor="empresa">Empresa *</label>
             </div>
             <div className="input-field col l12 s12">
               <Input name="telefone" id="telefone" type="text" className="validate" />

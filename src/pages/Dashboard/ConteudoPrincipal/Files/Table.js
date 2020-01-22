@@ -34,7 +34,7 @@ export default function Table({ id, videos }) {
             <tr>
                 <th>id</th>
                 <th>Titulo</th>
-                <th>Descrição</th>
+                <th>Empresa</th>
                 <th>Link</th>
                 <th>Editar</th>
                 <th>Deletar</th>

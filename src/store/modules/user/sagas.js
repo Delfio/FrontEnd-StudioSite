@@ -156,6 +156,35 @@ export function* cadastroEmpresaDestaque({payload}){
   }
 }
 
+export function* cadastroInfoPrincipal({ payload }){
+  try{
+    const {
+      titulo,
+      empresa,
+      descricao,
+      tipo,
+      telefone
+    } = payload.data;
+
+    const response = yield call(api.post, '/principal', {
+      titulo,
+      empresa,
+      descricao,
+      tipo,
+      telefone
+    })
+
+    const { id } = response.data
+
+    yield history.push(`/newPrincipal/${id}/files`)
+    toast.success('Conteudo cadastrado com sucesso')
+
+  }catch(err){
+    toast.error('Erro, Não foi possivel cadastrar o conteúdo')
+
+  }
+}
+
 export default all([
 
   takeLatest('@user/CADASTRO_CLASSIFICADO_REQUEST', cadastroClassificado),
@@ -163,4 +192,5 @@ export default all([
   takeLatest('@user/CADASTRO_NOTICIA_REQUEST', cadastroNoticia),
   takeLatest('@user/CADASTRO_EVENTO_REQUEST', cadastroEvento),
   takeLatest('@user/CADASTRO_EMPRESA_DESTAQUE_REQUEST', cadastroEmpresaDestaque),
+  takeLatest('@user/CADASTRO_INFO_PRINCIPAL_REQUEST', cadastroInfoPrincipal),
 ]);

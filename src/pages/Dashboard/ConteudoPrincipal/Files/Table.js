@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {toast} from 'react-toastify';
 
 import api from '../../../../services/api';
+// import { Container } from './styles';
 
 export default function Table({ id, videos }) {
 
@@ -9,16 +10,16 @@ export default function Table({ id, videos }) {
 
   useEffect(() =>{
     async function load(){
-      const response = await api.get(`eventos/${id}`);
+      const response = await api.get(`principal/${id}`);
       setVideos(response.data.videos);
     }
     load();
   }, [videos])
 
   async function deleteVideo(data){
-    await api.delete(`/eventos/${id}/video/${data}`)
+    await api.delete(`/principal/${id}/video/${data}`)
 
-    const response = await api.get(`eventos/${id}`);
+    const response = await api.get(`principal/${id}`);
     setVideos(response.data.videos);
 
     toast.success('Video deletado com sucesso')
@@ -26,8 +27,8 @@ export default function Table({ id, videos }) {
 
   return (
     <div className="row">
+      <br/>
       <h5 className="grey-text"> Videos já cadastrados </h5>
-        <br/>
         <table className="highlight centered">
           <thead>
             <tr>

@@ -45,3 +45,10 @@ export function cadastroEmpresaDestaqueRequest(data) {
     payload: { data }
   }
 }
+
+export function cadastroInfoPrincipalResquest(data) {
+  return {
+    type: '@user/CADASTRO_INFO_PRINCIPAL_REQUEST',
+    payload: { data }
+  }
+}

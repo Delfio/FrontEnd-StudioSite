@@ -81,6 +81,14 @@ import TodosOsEventos from '../pages/Dashboard/Eventos/AllEventos';
 
 /* Eventos */
 
+
+/* Conteudo Principal */
+
+import PostConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal';
+import FilesConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal/Files';
+
+/* Conteudo Principal */
+
 /*Details */
 
 import DetailsClassificado from '../pages/Details/Classificado';
@@ -181,6 +189,10 @@ export default function Routes() {
 
 {/* Eventos */}
 
+
+{/* Conteudo principal */}
+      <Route path="/conteudoPrincipal" exact component={PostConteudoPrincipal} isPrivate />
+      <Route path="/newPrincipal/:id/files" exact component={FilesConteudoPrincipal} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>

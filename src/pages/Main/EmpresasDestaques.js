@@ -45,7 +45,7 @@ export default function EmpresasDestaque() {
                 <section className="col s7 l12">
                   <TituloEmpresa className="black-text">{el.nome}</TituloEmpresa>
                   <p className="hide-on-small-only">
-                    {el.descricao}
+                    {el.brev_descricao}
                   </p>
                   <label htmlFor="">{el.endereco}</label>
                   <p>

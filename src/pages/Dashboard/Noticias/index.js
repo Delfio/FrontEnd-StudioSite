@@ -13,7 +13,7 @@ const schema = Yup.object().shape({
     .required('Insira um titulo da notícia'),
   brev_descricao: Yup.string()
     .required('Insira uma breve descrição')
-    .max(25, 'Maximo de 30 Caractere'),
+    .max(25, 'Maximo de 25 Caractere'),
   descricao: Yup.string()
     .required('Insira a descrição da Notícia')
     .min(30, 'Minimo de 30 Caractere'),

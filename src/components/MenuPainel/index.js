@@ -171,13 +171,13 @@ export default function MenuPainel() {
   <CollapsibleContent showContentAboveButton={true}>
     <ul style={{alignItems: 'center'}}>
       <li>
-        <Link to ="/novaNews">
+        <Link to ="/conteudoPrincipal">
           <i className="material-icons red-text">domain</i>
           <p>Novo Conteúdo</p>
         </Link>
       </li>
       <li>
-        <Link to ="/allNews">
+        <Link to ="/allConteudoPrincipal">
           <i className="material-icons red-text">format_list_bulleted</i>
           <p>Todos os Conteúdos</p>
         </Link>

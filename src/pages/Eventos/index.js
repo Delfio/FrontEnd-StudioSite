@@ -43,7 +43,7 @@ export default function Eventos() {
         <List className="row">
           <div className="col s12">
             {eventos.map(el => (
-              <li key="{el.id}" className="col s12 l4">
+              <li key={el.id} className="col s12 l4">
                 <a href={`evento/${el.id}`}>
                   <DivImg className="col l12 s5" bg={el.imagem.url}/>
                 </a>
@@ -53,7 +53,7 @@ export default function Eventos() {
                   </div>
                   <section className="col s2 right">
                     <a href={`evento/${el.id}`}>
-                      <p className="blue-text" style={{marginTop: 20}}><i class="material-icons">more_vert</i></p>
+                      <p className="blue-text" style={{marginTop: 20}}><i className="material-icons">more_vert</i></p>
                     </a>
                   </section>
                   <section className="col s12">

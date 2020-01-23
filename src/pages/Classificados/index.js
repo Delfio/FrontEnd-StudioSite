@@ -29,7 +29,7 @@ export default function Classificados() {
           <Container key="name">
             {anuncios.map(el => (
               el.aprovado? (
-                <a href={`classificado/${el.id}`}>
+                <a key={el.id} href={`classificado/${el.id}`}>
                 <li className="row">
                   <div style={{alignItems: 'center', display: 'flex'}} className="col s12">
                     <div style={{maxWidth: '150px', maxHeight: '238px', display: 'inline-block', marginRight: '20px', alignItems: 'center', display: 'flex'}} className="col l4 s5">

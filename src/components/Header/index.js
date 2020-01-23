@@ -9,7 +9,7 @@ export default function Header (){
   useEffect(() => {
     document.addEventListener('DOMContentLoaded', function() {
       const elems = document.querySelectorAll('.sidenav');
-      const instances = M.Sidenav.init(elems, {
+      M.Sidenav.init(elems, {
         edge: "left",
         inDuration: 250
       });
@@ -54,41 +54,45 @@ export default function Header (){
                 <i className="material-icons">menu</i>
             </a>
               <div className="container">
-                <Link to="/">
-                  <a href="#" className="brand-logo">Logo</a>
+                <Link className="brand-logo" to="/">
+                  Logo
                 </Link>
                 <ul className="right hide-on-med-and-down">
                   <li>
                     <Link to="/Noticias">
-                      <a href="#">Noticias</a>
+                      Noticias
                     </Link>
                   </li>
                   <li>
-                    <Link to = "/Classificados">
-                      <a href="#">Classificados</a>
+                    <Link to ="/Classificados">
+                      Classificados
                     </Link>
                   </li>
                   <li>
                     <Link to="/Eventos">
-                      <a href="#">Eventos</a>
+                      Eventos
                     </Link>
                   </li>
                   <li>
                     <Link to = "/Empresas">
-                      <a href="#">Tudo aqui empresa</a>
+                      Tudo aqui empresa
                     </Link>
                   </li>
-                  <li><a href="#" className="dropdown-trigger" data-target="dropdown1">Entrar<i className="material-icons right">arrow_drop_down</i></a></li>
+                  <li>
+                    <Link to="" className="dropdown-trigger" data-target="dropdown1">Entrar
+                      <i className="material-icons right">arrow_drop_down</i>
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
           </nav>
         </div>
         <ul id="mobile-demo" className="sidenav">
-          <li className>
-            <a href>
+          <li>
+            <Link to="#">
               <i className="material-icons">cloud</i>Seja Bem Vindo
-            </a>
+            </Link>
           </li>
           <li>
             <Link to = "/">
@@ -100,7 +104,7 @@ export default function Header (){
             <div className="divider" />
           </li>
           <li>
-            <Link to = "Noticias">
+            <Link to = "/Noticias">
 
             <p className="blue-text">Noticias</p>
             </Link>
@@ -110,7 +114,7 @@ export default function Header (){
             <div className="divider" />
           </li>
           <li>
-            <Link to = "Classificados">
+            <Link to = "/Classificados">
               <p className="blue-text">Classificados</p>
             </Link>
           </li>
@@ -118,7 +122,7 @@ export default function Header (){
             <div className="divider" />
           </li>
           <li>
-            <Link to = "Eventos">
+            <Link to = "/Eventos">
               <p className="blue-text">Eventos</p>
             </Link>
           </li>
@@ -126,7 +130,7 @@ export default function Header (){
             <div className="divider" />
           </li>
           <li>
-            <Link to = "Empresas">
+            <Link to = "/Empresas">
               <p className="blue-text">Guia Empresarial</p>
             </Link>
           </li>
@@ -134,7 +138,7 @@ export default function Header (){
             <div className="divider" />
           </li>
           <li>
-            <Link to = "painel">
+            <Link to = "/painel">
               <p className="red-text">{logado ? 'Painel': 'Entrar'}</p>
             </Link>
           </li>
@@ -143,7 +147,7 @@ export default function Header (){
           </li>
           {logado? null : (
             <li>
-              <Link to = "registrar">
+              <Link to = "/registrar">
                 <p className="red-text">Registrar-se</p>
               </Link>
             </li>

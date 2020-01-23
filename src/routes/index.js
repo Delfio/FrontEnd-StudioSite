@@ -90,6 +90,8 @@ import FilesConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal/Files';
 import EditarImagemConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal/EditarImagem';
 import AllConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal/AllConteudo';
 
+import EditarConteudoPrincipal from '../pages/Dashboard/ConteudoPrincipal/EditarConteudoPrincipal';
+
 /* Conteudo Principal */
 
 /*Details */
@@ -199,6 +201,7 @@ export default function Routes() {
       <Route path="/newPrincipal/:id/editarImagem/Evento/:imagem_id" exact component={EditarImagemConteudoPrincipal} isPrivate />
 
       <Route path="/allConteudoPrincipal" exact component={AllConteudoPrincipal} isPrivate />
+      <Route path="/editarConteudoPrincipal/:id" exact component={EditarConteudoPrincipal} isPrivate />
 
 {/* Conteudo principal */}
 

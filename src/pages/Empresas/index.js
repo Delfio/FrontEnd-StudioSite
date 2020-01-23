@@ -73,16 +73,17 @@ export default function Empresas () {
                           alt="logo"
                         />
                       </DivLogo>
-                      <a
+
+                      <a href={`/empresa/${empresaDestaque.id}`}
                         style={{
                           fontSize: 20,
                           color: 'white',
                           fontWeight: 'bold',
                         }}
-                        href={`empresa/${empresaDestaque.id}`}>
                       >
                         {empresaDestaque.nome}
                       </a>
+
                     </div>
                   </DivImg>
                   <DivInfo className="col s12 l6">

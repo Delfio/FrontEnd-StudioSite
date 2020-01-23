@@ -16,7 +16,6 @@ export default function Files(props) {
 
   const user = useSelector(state => state.user.profile);
   const [autorizado, setAutorizado] = useState(false)
-  const [noticia, setNoticia] = useState({})
 
   const [images, setImages] = useState([])
 

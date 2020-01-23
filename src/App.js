@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 import { ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
-import { Provider, useSelector } from 'react-redux'
+import { Provider } from 'react-redux'
 import { Router } from 'react-router-dom';
 
 import './config/ReactotronConfig';

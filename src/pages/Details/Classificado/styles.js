@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin-top: 55px;
+  display: block;
+
   h4{
     color: rgba(0,0,0,0.8);
     font-weight: 400;
@@ -12,10 +14,14 @@ export const Container = styled.div`
 
 export const List = styled.ul`
 
+  @media (max-width: 980px) {
+    margin-top: 1%;
+  }
   li {
     transition: transform 0.2s;
-
-
+    >div{
+      margin:0
+    }
     button {
       background: none;
       color: inherit;
@@ -41,6 +47,7 @@ export const Li = styled.li`
   align-items: 'center';
   justify-content: 'center';
 
+
 `
 
 export const Section = styled.section`
@@ -52,5 +59,6 @@ export const Section = styled.section`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
 `;
 

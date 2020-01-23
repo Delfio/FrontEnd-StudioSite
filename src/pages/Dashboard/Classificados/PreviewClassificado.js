@@ -7,15 +7,14 @@ import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import { Container } from './styles';
-import { Link } from 'react-router-dom';
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.slider');
-    var instances = M.Slider.init(elems, {});
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.slider');
+  M.Slider.init(elems, {});
 
-    var img = document.querySelectorAll('.materialboxed');
-    var imgInstance = M.Materialbox.init(img, {})
-  });
+  var img = document.querySelectorAll('.materialboxed');
+  M.Materialbox.init(img, {})
+});
 
 
 export default function Classificados(props) {

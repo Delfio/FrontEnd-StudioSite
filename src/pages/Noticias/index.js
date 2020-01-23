@@ -171,7 +171,7 @@ export default function Noticias() {
 
         <div className="row">
           {noticia7.map(el => (
-              <div className="col s12 l4">
+              <div key={el.id} className="col s12 l4">
               <List key="name">
                 <li className="col s12">
                   <a className="blue-text" href={`noticia/${el.id}`}>
@@ -191,7 +191,7 @@ export default function Noticias() {
           <div className="row">
             <div className="col s12">
               {noticia8.map(el => (
-                <a href={`noticia/${el.id}`}>
+                <a key={el.id} href={`noticia/${el.id}`}>
                   <div className="col s12 l4">
                     <section className="col s12">
                       <Huipremiumphoto

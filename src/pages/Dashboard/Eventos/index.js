@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import * as Yup from 'yup';
 import { Form, Input } from '@rocketseat/unform';
 
-import api from '../../../services/api';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {cadatroEventoRequest} from '../../../store/modules/user/actions'
 
 import DatePicker from './DaterPicker';

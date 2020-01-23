@@ -83,7 +83,7 @@ export default function TodosOsEventos() {
                 }</td>
                 <td className="center">{el.videos? "Sim": "Nulo"}</td>
                 <td>
-                  <a href={`/editarEvento/${el.id}`}>
+                  <a href={`/editarConteudoPrincipal/${el.id}`}>
                     Editar
                   </a>
                 </td>
@@ -95,7 +95,7 @@ export default function TodosOsEventos() {
                 <td>
                   <button
                     className="center btn-floating btn-small waves-effect waves-light red"
-                    title="Deletar Evento" onClick={()=> handleDelete(el.id)}>
+                    title="Deletar Conteudo" onClick={()=> handleDelete(el.id)}>
                     <i class="material-icons">add</i>
                   </button>
                 </td>
@@ -130,7 +130,7 @@ export default function TodosOsEventos() {
                 <td className="center">{el.imagens? "Sim": "Nulo"}</td>
                 <td className="center">{el.videos.url? "Sim": "Nulo"}</td>
                 <td>
-                  <a href={`/editarEvento/${el.id}`}>
+                  <a href={`/editarConteudoPrincipal/${el.id}`}>
                     Editar
                   </a>
                 </td>
@@ -142,7 +142,7 @@ export default function TodosOsEventos() {
                 <td>
                   <button
                     className="center btn-floating btn-small waves-effect waves-light red"
-                    title="Deletar Evento" onClick={()=> handleDelete(el.id)}>
+                    title="Deletar Conteudo" onClick={()=> handleDelete(el.id)}>
                     <i className="material-icons">add</i>
                   </button>
                 </td>
@@ -175,7 +175,7 @@ export default function TodosOsEventos() {
                   "'Dia' dd 'de' MMM", {locale: pt})
                 }</td>
                 <td>
-                  <a href={`/editarEvento/${el.id}`}>
+                  <a href={`/editarConteudoPrincipal/${el.id}`}>
                     Editar
                   </a>
                 </td>
@@ -187,7 +187,7 @@ export default function TodosOsEventos() {
                 <td>
                   <button
                     className="center btn-floating btn-small waves-effect waves-light red"
-                    title="Deletar Evento" onClick={()=> handleDelete(el.id)}>
+                    title="Deletar Conteudo" onClick={()=> handleDelete(el.id)}>
                     <i class="material-icons">add</i>
                   </button>
                 </td>

@@ -12,8 +12,6 @@ export default function FileInput(props) {
   const [permitido, setPermissao] = useState(false);
   const [imageLimit, setImageLimit] = useState(false);
 
-  const [ imagens, setImagens ] = useState(0);
-
   const [classificado, setClassificado] = useState({});
 
   const { id } = props.match.params;
@@ -39,7 +37,7 @@ export default function FileInput(props) {
 
       }else{
         setImageLimit(true)
-        setImagens(imagens.length)
+
       }
 
     }

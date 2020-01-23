@@ -18,8 +18,6 @@ export default function Files(props) {
   const [autororizado, setAutorizacao] = useState(false);
 
   const [tipo, setTipo] = useState();
-  const [imagem, setImagem] = useState([]);
-  const [video, setVideo] = useState([]);
 
   const user = useSelector(state => state.user.profile);
 
@@ -34,19 +32,6 @@ export default function Files(props) {
 
         const response  = await api.get(`principal/${id}`)
         setTipo(response.data.tipo)
-
-        console.log(response)
-
-        if(response.data.tipo == 1){
-          setVideo(response.data.videos)
-
-        } else if(response.data.tipo == 2){
-          setVideo(response.data.videos)
-          setImagem(response.data.imagens)
-
-        } else if(response.data.tipo == 3) {
-          setVideo(response.data.videos)
-        }
 
       } catch(err){
         setAutorizacao(false);

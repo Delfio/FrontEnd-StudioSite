@@ -1,6 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import {signOut} from '../../store/modules/auth/actions'
 
 import {
   CollapsibleComponent,
@@ -9,8 +11,13 @@ import {
 } from "react-collapsible-component";
 
 export default function MenuPainel() {
+  const dispatch = useDispatch();
 
   const adm = useSelector(state => state.auth.adm);
+
+  function deslogar() {
+    dispatch(signOut());
+  }
 
   return (
     <>
@@ -39,7 +46,7 @@ export default function MenuPainel() {
             <p>Meus Classificados </p>
           </Link>
         </li>
-        <li>
+        <li className={`${adm? null : 'hide'}`}>
           <Link to ="/allClassificados">
             <i className="material-icons cyan-text">view_list</i>
             <p>Todos os Classificados</p>
@@ -50,11 +57,11 @@ export default function MenuPainel() {
   </CollapsibleComponent>
 </li>
 
-<li className="divider">
+<li className={`divider ${adm? null : 'hide'}`}>
   <hr/>
 </li>
 
-<li>
+<li className={`${adm? null : 'hide'}`}>
   <CollapsibleHead showContentAboveButton={true}>
     Eventos
   </CollapsibleHead>
@@ -76,11 +83,11 @@ export default function MenuPainel() {
   </CollapsibleContent>
 </li>
 
-<li className="divider">
+<li className={`divider ${adm? null : 'hide'}`}>
   <hr/>
 </li>
 
-<li>
+<li className={`${adm? null : 'hide'}`}>
   <CollapsibleHead showContentAboveButton={true}>
     Empresas em Destaque
   </CollapsibleHead>
@@ -102,11 +109,11 @@ export default function MenuPainel() {
   </CollapsibleContent>
 </li>
 
-<li className="divider">
+<li className={`divider ${adm? null : 'hide'}`}>
   <hr/>
 </li>
 
-<li>
+<li className={`${adm? null : 'hide'}`}>
   <CollapsibleHead showContentAboveButton={true}>
     Guia Empresarial
   </CollapsibleHead>
@@ -128,11 +135,11 @@ export default function MenuPainel() {
   </CollapsibleContent>
 </li>
 
-<li className="divider">
+<li className={`divider ${adm? null : 'hide'}`}>
   <hr/>
 </li>
 
-<li>
+<li className={`${adm? null : 'hide'}`}>
   <CollapsibleHead showContentAboveButton={true}>
     Noticias
   </CollapsibleHead>
@@ -160,11 +167,11 @@ export default function MenuPainel() {
   </CollapsibleContent>
 </li>
 
-<li className="divider">
+<li className={`divider ${adm? null : 'hide'}`}>
   <hr/>
 </li>
 
-<li>
+<li className={`${adm? null : 'hide'}`}>
   <CollapsibleHead showContentAboveButton={true}>
     Conteúdo Principal
   </CollapsibleHead>
@@ -181,6 +188,32 @@ export default function MenuPainel() {
           <i className="material-icons red-text">format_list_bulleted</i>
           <p>Todos os Conteúdos</p>
         </Link>
+      </li>
+    </ul>
+  </CollapsibleContent>
+</li>
+
+<li className={`divider`}>
+  <hr/>
+</li>
+
+<li>
+  <CollapsibleHead showContentAboveButton={true}>
+    Perfil
+  </CollapsibleHead>
+  <CollapsibleContent showContentAboveButton={true}>
+    <ul style={{alignItems: 'center'}}>
+      <li>
+        <Link to ="/meuPerfil">
+          <i className="material-icons red-text">recent_actors</i>
+          <p>Meu Perfil</p>
+        </Link>
+      </li>
+      <li>
+        <a href="#" onClick={deslogar}>
+          <i className="material-icons red-text">exit_to_app</i>
+          <p className="red-text">Sair</p>
+        </a>
       </li>
     </ul>
   </CollapsibleContent>

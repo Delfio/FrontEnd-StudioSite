@@ -31,3 +31,9 @@ export function routePrivate( isPrivate ) {
     payload: { isPrivate },
   }
 }
+
+export function signOut() {
+  return {
+    type: '@auth/SIGN_OUT',
+  };
+}

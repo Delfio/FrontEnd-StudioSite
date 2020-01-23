@@ -3,6 +3,8 @@ import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import { useSelector } from 'react-redux';
 
+import {toast} from 'react-toastify';
+
 import api from '../../../../services/api';
 
 import { Container, Ul } from './styles';
@@ -21,23 +23,29 @@ export default function FileInput(props) {
 
   useEffect(() => {
     async function verifyPermission(){
-      if(user_id != user.id){
-        setPermissao(false)
-      }else{
-        setPermissao(true)
-      }
-      const response = await api.get(`/classificados/${id}`)
+      try{
+        if(user_id != user.id){
+          setPermissao(false)
+          toast.error('Algo deu errado!')
+        }else{
+          setPermissao(true)
+        }
+        const response = await api.get(`/classificados/${id}`)
 
-      setClassificado(response.data);
+        setClassificado(response.data);
 
-      const {imagens} = response.data;
+        const {imagens} = response.data;
 
-      if(imagens.length >= 3){
-        setImageLimit(false)
+        if(imagens.length >= 3){
+          setImageLimit(false)
 
-      }else{
-        setImageLimit(true)
+        }else{
+          setImageLimit(true)
 
+        }
+
+      } catch (err) {
+        toast.error('Algo deu errado!')
       }
 
     }

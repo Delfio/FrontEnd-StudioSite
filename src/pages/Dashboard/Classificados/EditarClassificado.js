@@ -36,10 +36,19 @@ export default function EditClassificado(props) {
 
   useEffect(() => {
     async function loadClassificado(){
-      const response = await api.get(`classificados/${id}`)
+      try{
+        const response = await api.get(`classificados/${id}`)
+        if(response.data.user.id !== user.id){
+          return (
+            props.history.push('/painel')
+          )
+        }
+        setClassificado(response.data);
+        setImagens(response.data.imagens)
 
-      setClassificado(response.data);
-      setImagens(response.data.imagens)
+      } catch (err) {
+
+      }
     }
 
     loadClassificado();

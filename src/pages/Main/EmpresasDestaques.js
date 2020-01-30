@@ -10,9 +10,7 @@ import {
 } from './styles';
 
 export default function EmpresasDestaque() {
-
-  const [empDestaque, setEmpDestaque] = useState([])
-
+  const [empDestaque, setEmpDestaque] = useState([]);
 
   useEffect(() => {
     async function loadEmpresas() {
@@ -22,7 +20,7 @@ export default function EmpresasDestaque() {
     }
 
     loadEmpresas();
-  }, [])
+  }, []);
 
   return (
     <div className="container">
@@ -43,10 +41,10 @@ export default function EmpresasDestaque() {
                   />
                 </DivBannerDestaque>
                 <section className="col s7 l12">
-                  <TituloEmpresa className="black-text">{el.nome}</TituloEmpresa>
-                  <p className="hide-on-small-only">
-                    {el.brev_descricao}
-                  </p>
+                  <TituloEmpresa className="black-text">
+                    {el.nome}
+                  </TituloEmpresa>
+                  <p className="hide-on-small-only">{el.brev_descricao}</p>
                   <label htmlFor="">{el.endereco}</label>
                   <p>
                     <a href={`/empresasDestaque/${el.id}`}>Ver Mais</a>

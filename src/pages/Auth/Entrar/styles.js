@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  box-shadow: 1px 0px 25px rgba(0,0,0,0.4);
+  box-shadow: 1px 0px 25px rgba(0, 0, 0, 0.4);
 
   align-items: center;
 
-  display:flex;
+  display: flex;
 
   @media (max-width: 980px) {
-    display:flex;
+    display: flex;
     align-items: center;
-    box-shadow: 1px 0px 25px rgba(0,0,0,0.1);
+    box-shadow: 1px 0px 25px rgba(0, 0, 0, 0.1);
   }
 
   margin-top: 15px;

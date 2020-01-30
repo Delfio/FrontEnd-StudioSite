@@ -5,8 +5,6 @@ import React, { Component } from 'react';
 import gif from '../../assets/gif_nativida.gif';
 
 export default class Banner extends Component {
-
-
   render() {
     return (
       <>
@@ -16,7 +14,6 @@ export default class Banner extends Component {
           </div>
         </div>
       </>
-    )
+    );
   }
-
 }

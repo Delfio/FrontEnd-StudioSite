@@ -9,7 +9,7 @@ export const List = styled.ul`
     padding-left: 12px;
     display: list-item;
 
-    box-sizing:border-box;
+    box-sizing: border-box;
 
     margin-top: 25px;
 
@@ -21,7 +21,7 @@ export const List = styled.ul`
       transition-delay: 0s;
       transform: scale(1.02);
 
-      box-shadow: 0px 0px 15px rgba(80,80,80, 0.6);
+      box-shadow: 0px 0px 15px rgba(80, 80, 80, 0.6);
     }
 
     @media (max-width: 980px) {
@@ -29,8 +29,6 @@ export const List = styled.ul`
       background: none;
       margin-top: 15px;
     }
-
-
   }
 `;
 
@@ -45,7 +43,6 @@ export const TituloEvento = styled.h4`
 `;
 
 export const DivImg = styled.section`
-
   border-radius: 25px;
   display: block;
   margin: 0;

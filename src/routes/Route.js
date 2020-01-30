@@ -4,8 +4,6 @@ import { Route, Redirect } from 'react-router-dom';
 
 import {store} from '../store';
 
-import Dashboard from '../pages/Dashboard';
-
 import AuthLayout from '../pages/_layouts/auth';
 import DefaultLayout from '../pages/_layouts/default';
 

@@ -58,7 +58,6 @@ export const List = styled.ul`
 `;
 
 export const List2 = styled.ul`
-
   li {
     & + li {
       border-top: solid #eee 2px;
@@ -67,7 +66,6 @@ export const List2 = styled.ul`
 `;
 
 export const List3 = styled.ul`
-
   li {
     border-radius: 15px;
 
@@ -75,7 +73,7 @@ export const List3 = styled.ul`
       transition-delay: 0s;
       transform: scale(1.02);
 
-      box-shadow: 0px 0px 15px rgba(80,80,80, 0.6);
+      box-shadow: 0px 0px 15px rgba(80, 80, 80, 0.6);
     }
 
     border-bottom: solid #eee 2px;

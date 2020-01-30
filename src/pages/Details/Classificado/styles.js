@@ -4,8 +4,8 @@ export const Container = styled.div`
   margin-top: 55px;
   display: block;
 
-  h4{
-    color: rgba(0,0,0,0.8);
+  h4 {
+    color: rgba(0, 0, 0, 0.8);
     font-weight: 400;
     letter-spacing: -1px;
     margin-bottom: 8;
@@ -13,14 +13,13 @@ export const Container = styled.div`
 `;
 
 export const List = styled.ul`
-
   @media (max-width: 980px) {
     margin-top: 1%;
   }
   li {
     transition: transform 0.2s;
-    >div{
-      margin:0
+    > div {
+      margin: 0;
     }
     button {
       background: none;
@@ -34,7 +33,7 @@ export const List = styled.ul`
       margin-top: 10px;
     }
 
-    :hover{
+    :hover {
       transform: scale(1.02);
 
       box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
@@ -46,9 +45,7 @@ export const Li = styled.li`
   display: 'flex';
   align-items: 'center';
   justify-content: 'center';
-
-
-`
+`;
 
 export const Section = styled.section`
   display: block;
@@ -59,6 +56,4 @@ export const Section = styled.section`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-
 `;
-

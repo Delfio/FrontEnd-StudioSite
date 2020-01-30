@@ -46,7 +46,6 @@ export const Container = styled.ul`
 `;
 
 export const ImgAnuncio = styled.img`
-
   height: 100%;
   width: 100%;
   /* // max-height: 9rem; */
@@ -59,4 +58,3 @@ export const ImgAnuncio = styled.img`
     transform: scale(1.02);
   }
 `;
-

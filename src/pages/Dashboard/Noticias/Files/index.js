@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import 'react-dropzone-uploader/dist/styles.css'
-import Dropzone from 'react-dropzone-uploader'
+import React, { useEffect, useState } from 'react';
+import 'react-dropzone-uploader/dist/styles.css';
+import Dropzone from 'react-dropzone-uploader';
 import { useSelector } from 'react-redux';
 
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { Link } from 'react-router-dom';
 
@@ -15,76 +15,73 @@ export default function Files(props) {
   const { id } = props.match.params;
 
   const user = useSelector(state => state.user.profile);
-  const [autorizado, setAutorizado] = useState(false)
+  const [autorizado, setAutorizado] = useState(false);
 
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
-    if(user.ADM){
-      setAutorizado(true)
-    }else{
-      setAutorizado(false)
+    if (user.ADM) {
+      setAutorizado(true);
+    } else {
+      setAutorizado(false);
     }
     async function loadNoticia() {
-      const response = await api.get(`noticias/${id}`)
+      const response = await api.get(`noticias/${id}`);
       // setNoticia(response.data);
 
       const { imagens } = response.data;
       setImages(imagens);
     }
     loadNoticia();
-  }, [])
+  }, []);
 
   const getUploadParams = async ({ file, meta }) => {
-    const body = new FormData()
-    body.append('fileField', file)
+    const body = new FormData();
+    body.append('fileField', file);
 
-    const data = new FormData()
+    const data = new FormData();
 
     data.append('imagem_noticia', file);
 
     await api.post(`noticias/${id}/imagem`, data);
-    const response = await api.get(`noticias/${id}`)
+    const response = await api.get(`noticias/${id}`);
 
     const { imagens } = response.data;
     setImages(imagens);
 
-    toast.success('imagem cadastrada com sucesso')
+    toast.success('imagem cadastrada com sucesso');
 
-    return { url: 'https://httpbin.org/post', body }
-  }
+    return { url: 'https://httpbin.org/post', body };
+  };
 
-  async function handleDelete(data){
-    await api.delete(`/noticias/${id}/imagem/${data}`)
+  async function handleDelete(data) {
+    await api.delete(`/noticias/${id}/imagem/${data}`);
 
-    const response = await api.get(`noticias/${id}`)
+    const response = await api.get(`noticias/${id}`);
 
     const { imagens } = response.data;
     setImages(imagens);
-    toast.success('Imagem deletada com sucesso')
+    toast.success('Imagem deletada com sucesso');
   }
 
-  async function deleteNews(){
-    await api.delete(`/noticias/${id}`)
+  async function deleteNews() {
+    await api.delete(`/noticias/${id}`);
 
-    toast.success('Noticia deletada')
-    return (
-      props.history.push('/allNews')
-    )
+    toast.success('Noticia deletada');
+    return props.history.push('/allNews');
   }
-
 
   return (
     <div className="container">
-      {autorizado? (
+      {autorizado ? (
         <Container className="col s12">
           <h1 className="red-text">Adicionar arquivos</h1>
-          <hr/>
+          <hr />
           <h6>. Insira os arquivos relacionados a noticia</h6>
           <h6>. A imagem principal será sempre a última inserida</h6>
           <h6>. As quantidades de imagem vai de acordo com o cadastrante</h6>
           <h6>. De preferência pra imagens quadradas '1000x1000'</h6>
-          <br/>
+          <br />
           <Dropzone
             // disabled={!logo}
             getUploadParams={getUploadParams}
@@ -92,11 +89,11 @@ export default function Files(props) {
             inputContent="Selecione ou arraste a logo"
             submitButtonContent="Enviar"
             accept="image/*"
-            maxSizeBytes={2024*2024}
+            maxSizeBytes={2024 * 2024}
             // maxFiles={1}
           />
-          <br/>
-          <div className ="col s12">
+          <br />
+          <div className="col s12">
             <h4>Imagens já cadastradas</h4>
           </div>
           <div className="row">
@@ -104,29 +101,47 @@ export default function Files(props) {
               <List className="container">
                 {images.map(el => (
                   <li className="col l4 s6" key={el.id}>
-                    <Section className="col s12" bg={el.url}/>
+                    <Section className="col s12" bg={el.url} />
                     <section className="col s12">
-                    <button className="right" title="Deletar Imagem" onClick={() => handleDelete(el.id)}>
-                      <i className="material-icons small red-text">delete</i>
-                    </button>
-                    <button className="left" title="Editar Imagem">
-                      <Link to={`editarImagem/News/${el.id}`}>
-                        <i className="material-icons small green-text">edit</i>
-                      </Link>
-                    </button>
-                  </section>
+                      <button
+                        className="right"
+                        title="Deletar Imagem"
+                        onClick={() => handleDelete(el.id)}
+                      >
+                        <i className="material-icons small red-text">delete</i>
+                      </button>
+                      <button className="left" title="Editar Imagem">
+                        <Link to={`editarImagem/News/${el.id}`}>
+                          <i className="material-icons small green-text">
+                            edit
+                          </i>
+                        </Link>
+                      </button>
+                    </section>
                   </li>
                 ))}
               </List>
-            ): null}
+            ) : null}
           </div>
-          <br/>
+          <br />
           <div className="row">
-            <div style={{display: 'flex', alignItems: 'center'}} className="col s12">
-              <button title="Deletar empresa" onClick={()=>deleteNews()} className="btn-floating btn-samall waves-effect waves-light red">
+            <div
+              style={{ display: 'flex', alignItems: 'center' }}
+              className="col s12"
+            >
+              <button
+                title="Deletar empresa"
+                onClick={() => deleteNews()}
+                className="btn-floating btn-samall waves-effect waves-light red"
+              >
                 <i className="material-icons">delete</i>
               </button>
-              <h5 className="red-text" style={{marginLeft: 18, fontWeight: 'bold'}}>Deletar Noticia</h5>
+              <h5
+                className="red-text"
+                style={{ marginLeft: 18, fontWeight: 'bold' }}
+              >
+                Deletar Noticia
+              </h5>
             </div>
           </div>
         </Container>

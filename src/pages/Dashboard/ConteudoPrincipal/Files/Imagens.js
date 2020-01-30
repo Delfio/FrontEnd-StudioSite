@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import 'react-dropzone-uploader/dist/styles.css'
-import Dropzone from 'react-dropzone-uploader'
+import React, { useEffect, useState } from 'react';
+import 'react-dropzone-uploader/dist/styles.css';
+import Dropzone from 'react-dropzone-uploader';
 
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { Link } from 'react-router-dom';
 
@@ -10,50 +10,49 @@ import api from '../../../../services/api';
 
 import { Section, List } from './styles';
 
-export default function Imagens({id}) {
-
+export default function Imagens({ id }) {
   const [images, setImages] = useState([]);
 
-  useEffect(() =>{
+  useEffect(() => {
     async function loadImage() {
-      const response = await api.get(`/principal/${id}`)
+      const response = await api.get(`/principal/${id}`);
 
-      setImages(response.data.imagens)
+      setImages(response.data.imagens);
     }
     loadImage();
-  }, [])
+  }, []);
 
   const getUploadParams = async ({ file, meta }) => {
-    try{
-      const body = new FormData()
-      body.append('fileField', file)
+    try {
+      const body = new FormData();
+      body.append('fileField', file);
 
-      const data = new FormData()
+      const data = new FormData();
 
       data.append('imagem_principal', file);
 
       await api.post(`principal/${id}/imagem`, data);
-      const response = await api.get(`principal/${id}`)
+      const response = await api.get(`principal/${id}`);
 
       const { imagens } = response.data;
       setImages(imagens);
 
-      toast.success('imagem cadastrada com sucesso')
+      toast.success('imagem cadastrada com sucesso');
 
-      return { url: 'https://httpbin.org/post', body }
+      return { url: 'https://httpbin.org/post', body };
     } catch (err) {
-      toast.error('Algo deu errado! ')
+      toast.error('Algo deu errado! ');
     }
-  }
+  };
 
-  async function handleDelete(data){
-    await api.delete(`/principal/imagem/${data}`)
+  async function handleDelete(data) {
+    await api.delete(`/principal/imagem/${data}`);
 
-    const response = await api.get(`principal/${id}`)
+    const response = await api.get(`principal/${id}`);
 
     const { imagens } = response.data;
     setImages(imagens);
-    toast.success('Imagem deletada com sucesso')
+    toast.success('Imagem deletada com sucesso');
   }
 
   return (
@@ -66,11 +65,11 @@ export default function Imagens({id}) {
         inputContent="Selecione ou arraste a logo"
         submitButtonContent="Enviar"
         accept="image/*"
-        maxSizeBytes={2024*2024}
+        maxSizeBytes={2024 * 2024}
         // maxFiles={1}
       />
-      <br/>
-      <div className ="col s12">
+      <br />
+      <div className="col s12">
         <h4>Imagens já cadastradas</h4>
       </div>
       <div className="row">
@@ -78,23 +77,27 @@ export default function Imagens({id}) {
           <List className="container">
             {images.map(el => (
               <li className="col l4 s6" key={el.id}>
-                <Section className="col s12" bg={el.url}/>
+                <Section className="col s12" bg={el.url} />
                 <section className="col s12">
-                <button className="right" title="Deletar Imagem" onClick={() => handleDelete(el.id)}>
-                  <i className="material-icons small red-text">delete</i>
-                </button>
-                <button className="left" title="Editar Imagem">
-                  <Link to={`editarImagem/Evento/${el.id}`}>
-                    <i className="material-icons small green-text">edit</i>
-                  </Link>
-                </button>
-              </section>
+                  <button
+                    className="right"
+                    title="Deletar Imagem"
+                    onClick={() => handleDelete(el.id)}
+                  >
+                    <i className="material-icons small red-text">delete</i>
+                  </button>
+                  <button className="left" title="Editar Imagem">
+                    <Link to={`editarImagem/Evento/${el.id}`}>
+                      <i className="material-icons small green-text">edit</i>
+                    </Link>
+                  </button>
+                </section>
               </li>
             ))}
           </List>
-        ): null}
+        ) : null}
       </div>
-      <br/>
+      <br />
     </>
   );
 }

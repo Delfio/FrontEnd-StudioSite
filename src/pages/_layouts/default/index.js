@@ -1,5 +1,5 @@
 import React from 'react';
-import PropType from 'prop-types'
+import PropType from 'prop-types';
 
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
@@ -18,4 +18,4 @@ export default function DefaultLayout({ children }) {
 
 DefaultLayout.prototype = {
   children: PropType.element.isRequired,
-}
+};

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { routePrivate } from '../../store/modules/auth/actions'
+import { routePrivate } from '../../store/modules/auth/actions';
 
 import api from '../../services/api';
 
@@ -16,36 +16,39 @@ import {
   InfosEmpresas,
 } from './styles';
 
-export default function Empresas () {
-
+export default function Empresas() {
   const dispatch = useDispatch();
 
   const [empresaDestaque, setEmpresaDestaque] = useState({});
   const [empresaNormal, setEmpresaNormal] = useState([]);
 
-  const [video, setVideo] = useState({})
+  const [video, setVideo] = useState({});
 
   useEffect(() => {
     dispatch(routePrivate(false));
 
     async function loadEmpresas() {
-      const response = await api.get('/empresas');
-      setEmpresaDestaque(response.data.EmpresaDestaque);
-      setEmpresaNormal(response.data.EmpresasNormais);
+      try {
+        const response = await api.get('/empresas');
+        setEmpresaDestaque(response.data.EmpresaDestaque);
+        setEmpresaNormal(response.data.EmpresasNormais);
 
-      const principal = await api.get('/principal');
+        const principal = await api.get('/principal');
 
-      principal.data.map(el => (
-        setVideo(el.Info3)
-      ))
+        principal.data.map(el => setVideo(el.Info3));
+      } catch(err) {
+        return;
+      }
     }
 
-    loadEmpresas()
-  }, [])
+    loadEmpresas();
+  }, []);
 
   return (
     <div className="row">
       <div className="container">
+        {empresaDestaque ? (
+          <>
         <div className="col s12">
           <div className="row center-align">
             <h4 className="">Empresas em Destaque</h4>
@@ -57,7 +60,9 @@ export default function Empresas () {
                 <DivEmpresaDestaque className="col s12">
                   <DivImg
                     className="col s12 l6"
-                    bg={empresaDestaque.imagem ? empresaDestaque.imagem.url: null}
+                    bg={
+                      empresaDestaque.imagem ? empresaDestaque.imagem.url : null
+                    }
                   >
                     <div
                       style={{
@@ -69,12 +74,17 @@ export default function Empresas () {
                     >
                       <DivLogo>
                         <LogoIMG
-                          src={empresaDestaque.logo ? empresaDestaque.logo.url: null}
+                          src={
+                            empresaDestaque.logo
+                              ? empresaDestaque.logo.url
+                              : null
+                          }
                           alt="logo"
                         />
                       </DivLogo>
 
-                      <a href={`/empresa/${empresaDestaque.id}`}
+                      <p
+                        href={`/empresa/${empresaDestaque.id}`}
                         style={{
                           fontSize: 20,
                           color: 'white',
@@ -82,23 +92,26 @@ export default function Empresas () {
                         }}
                       >
                         {empresaDestaque.nome}
-                      </a>
-
+                      </p>
                     </div>
                   </DivImg>
                   <DivInfo className="col s12 l6">
                     <h3>{empresaDestaque.nome}</h3>
-                    <p>
-                      {empresaDestaque.descricao}
-                    </p>
+                    <p>{empresaDestaque.descricao}</p>
                     <a href={`tel:55-69${empresaDestaque.fone_contato}`}>
                       <i className="material-icons">phone</i>
-                      {`(69) ${empresaDestaque.fone_contato} ${empresaDestaque.fone_contato2 ? `|| ${empresaDestaque.fone_contato2}` : ``}`}
+                      {`(69) ${empresaDestaque.fone_contato} ${
+                        empresaDestaque.fone_contato2
+                          ? `|| ${empresaDestaque.fone_contato2}`
+                          : ``
+                      }`}
                     </a>
                     <h4 className="hide-on-med-and-down">
                       {empresaDestaque.endereco}
                     </h4>
-                    <h6 className="hide-on-large-only">{empresaDestaque.endereco}</h6>
+                    <h6 className="hide-on-large-only">
+                      {empresaDestaque.endereco}
+                    </h6>
                   </DivInfo>
                 </DivEmpresaDestaque>
               </a>
@@ -106,10 +119,7 @@ export default function Empresas () {
           </List>
           {/* Empresas Normais */}
           <List key="kkks">
-            <h4
-              style={{ marginTop: 35, marginBottom: 10 }}
-              className="center"
-            >
+            <h4 style={{ marginTop: 35, marginBottom: 10 }} className="center">
               Outras Empresas
             </h4>
 
@@ -125,20 +135,19 @@ export default function Empresas () {
                   </div>
                   <InfosEmpresas className="col l12 s8">
                     <h5 className="center">{el.nome}</h5>
-                    <p className="truncate black-text">
-                      {el.descricao}
-                    </p>
+                    <p className="truncate black-text">{el.descricao}</p>
                     <a href={`tel:55-69${el.fone_contato}`}>
                       <i className="material-icons">phone</i>
-                      {`(69) ${el.fone_contato} ${el.fone_contato2 ? `|| ${el.fone_contato2}` : ``}`}
-
+                      {`(69) ${el.fone_contato} ${
+                        el.fone_contato2 ? `|| ${el.fone_contato2}` : ``
+                      }`}
                     </a>
                   </InfosEmpresas>
                   <div className="row" />
                 </a>
               </DivEmpresas>
             ))}
-{/*
+            {/*
             <DivEmpresas className="col s12 l4">
               <a href="">
                 <div className="row" />
@@ -184,7 +193,11 @@ export default function Empresas () {
               </section>
             </div>
           </div>
-        ): null}
+        ) : null}
+          </>
+        ) : (
+          <h2>null</h2>
+        )}
       </div>
     </div>
   );

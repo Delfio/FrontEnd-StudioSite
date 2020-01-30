@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import ReactDatePicker, {registerLocale} from 'react-datepicker';
+import ReactDatePicker, { registerLocale } from 'react-datepicker';
 
 import { useField } from '@rocketseat/unform';
 
@@ -11,7 +11,7 @@ export default function DatePicker({ name }) {
   const [selected, setSelected] = useState(defaultValue);
 
   useEffect(() => {
-    console.log('veio')
+    console.log('veio');
     registerField({
       name: fieldName,
       ref: ref.current,

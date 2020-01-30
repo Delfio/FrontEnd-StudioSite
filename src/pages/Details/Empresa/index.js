@@ -3,7 +3,5 @@ import React from 'react';
 // import { Container } from './styles';
 
 export default function DetailsEmpresa() {
-  return (
-    <div />
-  );
+  return <div />;
 }

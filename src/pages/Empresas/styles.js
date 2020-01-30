@@ -69,21 +69,17 @@ export const LogoIMG = styled.img`
 `;
 
 export const DivInfo = styled.div`
-
-flex: 1;
-display: block
-
-  h3 {
+  flex: 1;
+  display: block h3 {
     margin-left: 25px;
     font-size: 2.3em;
     font-weight: 500;
     line-height: 1.2;
-    letter-spacing: -.035em;
-    color: rgba(0,0,0,0.8);
-
+    letter-spacing: -0.035em;
+    color: rgba(0, 0, 0, 0.8);
   }
   p {
-    color: grey
+    color: grey;
   }
   a {
     display: flex;
@@ -97,7 +93,6 @@ display: block
     margin-top: 2.7rem;
     font-size: 15px;
     font-weight: 500;
-
   }
   h6 {
     font-weight: 500;

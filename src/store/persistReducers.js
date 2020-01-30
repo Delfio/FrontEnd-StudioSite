@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist';
 
 export default reducers => {
   const persistedReducer = persistReducer({
-    key: 'studiosite',
+    key: process.env.REACT_APP_KEY_STORAGE,
     storage,
     whitelist: ['auth', 'user'],
   }, reducers);

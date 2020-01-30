@@ -17,14 +17,14 @@ export const Ul = styled.ul`
     margin: -25px;
     align-items: center;
     p {
-      background-color: rgba(0,0,0,0.02);
-      font-size: 0.70em;
+      background-color: rgba(0, 0, 0, 0.02);
+      font-size: 0.7em;
       text-align: start;
     }
     h4 {
       margin-bottom: -22px;
       font-weight: 700;
-      color: rgba(150, 0, 15, 0.7)
+      color: rgba(150, 0, 15, 0.7);
     }
   }
-`
+`;

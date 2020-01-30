@@ -12,13 +12,11 @@ export const Container = styled.div`
   input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
   }
-
 `;
 
 export const List = styled.ul`
-
   li {
     transition: transform 0.2s;
 
@@ -34,7 +32,7 @@ export const List = styled.ul`
       margin-top: 10px;
     }
 
-    :hover{
+    :hover {
       transform: scale(1.02);
 
       box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
@@ -52,4 +50,3 @@ export const Section = styled.section`
   -o-background-size: cover;
   background-size: cover;
 `;
-

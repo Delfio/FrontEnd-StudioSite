@@ -12,7 +12,6 @@ export const Container = styled.div`
   input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
   }
-
 `;
